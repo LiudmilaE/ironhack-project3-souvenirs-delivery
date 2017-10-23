@@ -11,8 +11,8 @@ router.post('/signup', (req, res, next) => {
 	const { 
 		username,
 		email, 
-		firstName, 
-		lastName, 
+		firstname, 
+		lastname, 
 		password 
 	} = req.body;
 
@@ -20,8 +20,8 @@ router.post('/signup', (req, res, next) => {
 	const user = new User({
 		username,
 		email,
-		firstName,
-		lastName,
+		firstname,
+		lastname,
 	});
 
 	User.register(user, password, err => {
