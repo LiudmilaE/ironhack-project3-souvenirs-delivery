@@ -1,8 +1,8 @@
 const express = require('express');
-const jwt = require('jwt-simple');
-const passport = require('passport');
 const router = express.Router();
 const User = require('../models/user');
+const jwt = require('jwt-simple');
+const passport = require('passport');
 const config = require('../config');
 
 //signup
@@ -13,7 +13,8 @@ router.post('/signup', (req, res, next) => {
 		email, 
 		firstName, 
 		lastName, 
-		password } = req.body;
+		password 
+	} = req.body;
 
 	// User.register add the hashed version of password
 	const user = new User({
@@ -31,8 +32,8 @@ router.post('/signup', (req, res, next) => {
 	});
 });
 
-//login
-// User.authenticate() returns a function
+// //login
+// // User.authenticate() returns a function
 const authenticate = User.authenticate();
 router.post('/login', (req, res, next) => {
 	const { username, password } = req.body;

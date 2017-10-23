@@ -30,7 +30,7 @@ if (app.get('env') === 'development') {
 	);
 }
 
-passport.initialize();
+app.use(passport.initialize());
 //passport strategy for JWT
 const strategy = new Strategy(
 	{
@@ -86,6 +86,7 @@ app.use(function(err, req, res, next) {
 	// render the error message only in development mode
 	res.status(err.status || 500);
 	res.json({
+		message: err.message,
 		error: req.app.get('env') === 'development' ? err : {},
 	});
 });
