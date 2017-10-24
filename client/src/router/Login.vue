@@ -60,7 +60,7 @@
 		width: auto;
 	}
 	form {
-		max-width: 400px;
+		max-width: 350px;
 		margin: 10px auto;
 	}
 </style>

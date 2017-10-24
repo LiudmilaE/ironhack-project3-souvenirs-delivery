@@ -19,7 +19,7 @@
 					</h2>
 					<h3 class="subtitle is-3">Are you going to travel soon? Register your spare space in baggage, bring tasty food from your hometown and earn some extra income
 					</h3>
-					<button class="button is-primary is-large is-inverted is-outlined" id="trip-btn">Register your trip</button>
+					<router-link to="/trips/new"><span class="button is-primary is-large is-inverted is-outlined" id="trip-btn">Register your trip</span></router-link>
 				</div>
 			</div>
 		</section>

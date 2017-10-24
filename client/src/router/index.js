@@ -4,6 +4,7 @@ import Home from './Home';
 import Signup from './Signup';
 import Login from './Login';
 import Profile from './Profile';
+import TripForm from './TripForm';
 import { checkUser } from '@/api/auth';
 
 Vue.use(Router);
@@ -32,6 +33,13 @@ const router = new Router({
 		{
 			path: '/profile',
 			component: Profile,
+			meta: {
+				requiresAuth: true,
+			},
+		},
+		{
+			path: '/trips/new',
+			component: TripForm,
 			meta: {
 				requiresAuth: true,
 			},

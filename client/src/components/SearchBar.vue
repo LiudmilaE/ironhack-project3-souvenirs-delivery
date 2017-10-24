@@ -3,7 +3,7 @@
 		<b-field>
       <b-input placeholder="Search..."
           type="search"
-          icon="search" expanded>
+          icon="search" expanded v-model="query">
       </b-input>
       <p class="control">
         <button class="button is-primary">Search</button>
@@ -17,12 +17,17 @@
 </template>
 
 <script>
+	import UserCard from '@/components/UserCard'
+
 	export default {
 		data () {
 			return {
 				travelers: [],
 				query: ''
 			}
+		},
+		components: {
+			UserCard,
 		},
 		methods: {
 			search () {
