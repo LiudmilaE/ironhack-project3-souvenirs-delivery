@@ -13,11 +13,11 @@
 			</b-field>
 
 			<b-field label="First Name">
-				<b-input v-model="firstname" required maxlength="30"></b-input>
+				<b-input v-model="firstName" required maxlength="30"></b-input>
 			</b-field>
 
 			<b-field label="Last Name">
-				<b-input v-model="lastname" required maxlength="30"></b-input>
+				<b-input v-model="lastName" required maxlength="30"></b-input>
 			</b-field>
 
 				<b-field label="Password">
@@ -44,8 +44,8 @@
 				username: '',
 				email: '',
 				password: '',
-				firstname: '',
-				lastname: '',
+				firstName: '',
+				lastName: '',
 				error: null
 			}
 		},
@@ -55,14 +55,14 @@
 				signup({
 					username: this.username,
 					email: this.email,
-					firstname: this.firstname,
-					lastname: this.lastname,
+					firstName: this.firstName,
+					lastName: this.lastName,
 					password: this.password
 				}).then(() => {
 					this.$router.push('/login');
 				}).catch(err => {
 					this.error = err.response.data.error
-					console.error('Signup err', err);
+					console.error('Signup err', err.response.data.error);
 				});
 			}
 		}

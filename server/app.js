@@ -30,30 +30,29 @@ if (app.get('env') === 'development') {
 	);
 }
 
-app.use(passport.initialize());
+passport.initialize();
 //passport strategy for JWT
-const strategy = new Strategy(
-	{
+const strategy = new Strategy({
 		// this is a config we pass to the strategy
 		// it needs to secret to decrypt the payload of the
 		// token.
 		secretOrKey: config.jwtSecret,
 		// This options tells the strategy to extract the token
 		// from the header of the request
-		jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+		jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 	},
 	(payload, done) => {
 		// payload is the object we encrypted at the route /api/token
 		// We get the user id, make sure the user exist by looking it up
 		User.findById(payload.id).then(user => {
-			if (user) {
+			if(user){
 				// make the user accessible in req.user
 				done(null, user);
 			} else {
-				done(new Error('User not found'));
+				done(new Error("User not found"));
 			}
 		});
-	} 
+	}
 );
 //tell passport to use this strategy
 passport.use(strategy);
@@ -87,7 +86,7 @@ app.use(function(err, req, res, next) {
 	res.status(err.status || 500);
 	res.json({
 		message: err.message,
-		error: req.app.get('env') === 'development' ? err : {},
+		error: req.app.get('env') === 'development' ? err.message : {},
 	});
 });
 
