@@ -6,7 +6,7 @@
 					<h1 class='title is-1'>Souvenir Delivery</h1>
 					<h2 class="subtitle is-3">There is always something tasty to discover in any country!</h2>
 				</div>
-				<p  v-if="$root.user">Hi, {{ $root.user.firstName }}!</p>
+				
 				<search-bar></search-bar>
 			</div>
 			

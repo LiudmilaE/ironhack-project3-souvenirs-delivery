@@ -25,15 +25,20 @@
 					<router-link v-if="!$root.user" to="/signup" class="navbar-item">
 							Signup
 					</router-link>
+					<router-link v-if="$root.user" to="/profile" class="navbar-item">
+							My Profile
+					</router-link>
 					<a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
 							Logout
 					</a>
 				</div>
 			</div>
 		</nav>
+
 		<div>
 			<router-view/>
 		</div>
+
 		<footer class="footer">
 			<div class="container">
 		    <div class="content has-text-centered">
