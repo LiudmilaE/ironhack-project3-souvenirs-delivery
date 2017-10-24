@@ -11,8 +11,8 @@ router.post('/signup', (req, res, next) => {
 	const { 
 		username,
 		email, 
-		firstname, 
-		lastname, 
+		firstName, 
+		lastName, 
 		password 
 	} = req.body;
 
@@ -20,8 +20,8 @@ router.post('/signup', (req, res, next) => {
 	const user = new User({
 		username,
 		email,
-		firstname,
-		lastname,
+		firstName,
+		lastName,
 	});
 
 	User.register(user, password, err => {
@@ -65,7 +65,7 @@ router.post('/login', (req, res, next) => {
 				const token = jwt.encode(payload, config.jwtSecret);
 				res.json({
 					user: {
-						name: user.name,
+						firstName: user.firstName,
 						username: user.username,
 						_id: user._id,
 					},
