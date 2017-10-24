@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error.message }}
 		</b-notification>
@@ -72,6 +72,6 @@
 <style scoped>
 	form {
 		max-width: 400px;
-		margin: auto;
+		margin: 10px auto;
 	}
 </style>

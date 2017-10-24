@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<form @submit.prevent="login">
 			<b-field label="Username">
 						<b-input v-model="username" maxlength="50"></b-input>
@@ -61,6 +61,6 @@
 	}
 	form {
 		max-width: 400px;
-		margin: auto;
+		margin: 10px auto;
 	}
 </style>
