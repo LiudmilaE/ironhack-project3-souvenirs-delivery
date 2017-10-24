@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar">
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
       <div class="navbar-end">
         <router-link v-if="!$root.user" to="/login" class="navbar-item">
             Login
@@ -27,7 +27,7 @@ export default {
   methods: {
     logout () {
       logout(this.$root);
-      this.$rooter.push('/');
+      this.$router.push('/');
     }
   }
 }
@@ -41,5 +41,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app {
+  margin-top: 0;
+}
+.container {
+  padding-top: 40px;
 }
 </style>

@@ -26,23 +26,23 @@
 
 <script>
 	import { login } from '@/api/auth';
-	import LoginForm from '@/components/LoginForm'
+	//import LoginForm from '@/components/LoginForm'
 
 	export default {
 		data () {
 			return {
 				username: '',
 				password: '',
-				isComponentModalActive: false,
-				formProps: {
-					username: 'coco',
-					password: 'testing'
-				}
+				// isComponentModalActive: false,
+				// formProps: {
+				// 	username: 'coco',
+				// 	password: ''
+				// }
 			}
 		},
-		components: {
-			LoginForm
-		},
+		// components: {
+		// 	LoginForm
+		// },
 		//props: ['email', 'password']
 		methods: {
 			login () {

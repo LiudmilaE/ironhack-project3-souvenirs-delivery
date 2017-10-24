@@ -18,12 +18,12 @@ export function checkUser(vm) {
 	const token = localStorage.getItem('token');
 	const userInfo = localStorage.getItem('user');
 	if (token && userInfo) {
-		const user = JSON.paerse(userInfo);
+		const user = JSON.parse(userInfo);
 		saveUserInfo({
 			token,
 			user,
 		});
-		vm.user = user
+		vm.user = user;
 	}
 }
 

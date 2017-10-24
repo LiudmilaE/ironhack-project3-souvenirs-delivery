@@ -19,7 +19,6 @@ new Vue({
   data: {
   	user: null,
   },
-
   created() {
   	checkUser(this.$root);
   },
