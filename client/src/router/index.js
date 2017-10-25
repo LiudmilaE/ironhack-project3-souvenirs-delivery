@@ -41,9 +41,6 @@ const router = new Router({
 		{
 			path: '/trips',
 			component: Trips,
-			meta: {
-				requiresAuth: true,
-			},
 		},
 		{
 			path: '/trips/new',

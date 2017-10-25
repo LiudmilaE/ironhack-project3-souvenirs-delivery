@@ -6,7 +6,12 @@ const Trip = require('../models/trip');
 
 //trip endpoints
 router.get('/', (req,res,next) => {
-	Trip.find({}, 'from to tripDate deliveryPrice _id')
+	let attribute = req.query.from; //search by country 'from'
+	let param = {}
+	if (attribute) { 
+		param = { from: attribute }
+	 }
+	Trip.find(param, 'from to tripDate deliveryPrice _id')
 	.then(trips => {
 		res.json(trips);
 	})
