@@ -20,18 +20,31 @@
 				<b-input v-model="lastName" required maxlength="30"></b-input>
 			</b-field>
 
-				<b-field label="Password">
-						<b-input
-							type="password"
-							required
-							v-model="password"
-							password-reveal
-						>
-						</b-input>
-				</b-field>
+			<b-field label="Current country where you live">
+				<b-select
+					v-model="country"
+					icon="globe"
+					icon-pack="fa">
+					<option disabled value="">Please select one</option>
+					<option v-for="option in options" :value="option">{{option}}</option>
+					
+				</b-select>
 
-				<button class="button is-primary">Signup</button>
-			</form>
+			</b-field>
+
+
+			<b-field label="Password">
+				<b-input
+						type="password"
+						required
+						v-model="password"
+						password-reveal
+					>
+				</b-input>
+			</b-field>
+
+			<button class="button is-primary">Signup</button>
+		</form>
 	</div>
 </template>
 
@@ -41,12 +54,17 @@
 	export default {
 		data () {
 			return {
+				error: null,
 				username: '',
 				email: '',
 				password: '',
 				firstName: '',
 				lastName: '',
-				error: null
+				country: '',
+				options: [
+					'Ukraine',
+					"France"
+				]
 			}
 		},
 		methods: {
@@ -57,7 +75,8 @@
 					email: this.email,
 					firstName: this.firstName,
 					lastName: this.lastName,
-					password: this.password
+					password: this.password,
+					country: this.country,
 				}).then(() => {
 					this.$router.push('/login');
 				}).catch(err => {

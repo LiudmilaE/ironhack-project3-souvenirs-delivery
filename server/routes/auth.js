@@ -13,7 +13,8 @@ router.post('/signup', (req, res, next) => {
 		email, 
 		firstName, 
 		lastName, 
-		password 
+		password,
+		country
 	} = req.body;
 
 	// User.register add the hashed version of password
@@ -22,6 +23,7 @@ router.post('/signup', (req, res, next) => {
 		email,
 		firstName,
 		lastName,
+		country,
 	});
 
 	User.register(user, password, err => {
@@ -65,6 +67,7 @@ router.post('/login', (req, res, next) => {
 				const token = jwt.encode(payload, config.jwtSecret);
 				res.json({
 					user: {
+						country: user.country,
 						firstName: user.firstName,
 						username: user.username,
 						_id: user._id,

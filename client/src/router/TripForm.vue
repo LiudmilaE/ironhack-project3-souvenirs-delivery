@@ -4,12 +4,24 @@
 			{{ error.message }}
 		</b-notification>
 		<form @submit.prevent="">
-			<b-field label="From">
-				<b-input v-model="from" required maxlength="30"></b-input>
+			<b-field label="Country, you will travel from">
+				<b-select
+          v-model="from"
+          icon="globe"
+          icon-pack="fa">
+          <option disabled value="">Please select one</option>
+          <option v-for="option in options" :value="option">{{option}}</option>
+        </b-select>
 			</b-field>
 
-			<b-field label="To">
-				<b-input type="text" v-model="to" required maxlength="30"></b-input>
+			<b-field label="Country, you are going to">
+				<b-select
+          v-model="to"
+          icon="globe"
+          icon-pack="fa">
+          <option disabled value="">Please select one</option>
+          <option v-for="option in options" :value="option">{{option}}</option>
+        </b-select>
 			</b-field>
 
 			<b-field label="Trip Date">
@@ -31,6 +43,10 @@
 			return {
 				from: '',
 				to: '',
+				options: [
+					'Ukraine',
+					"France"
+				],
 				tripDate: '',
 				deliveryPrice: '',
 				error: null

@@ -30,7 +30,6 @@ const userSchema = new Schema({
 	country: { 
 		type: String, 
 		enum: COUNTRIES,
-		default: "Ukraine",
 		required: true 
 	},
 	//isTraveler: Boolean,
