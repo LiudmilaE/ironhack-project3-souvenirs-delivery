@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
+const countriesDB = require('../data/countries');
+
+const COUNTRIES = countriesDB.map(function(obj){
+	return obj.name
+});
+
 
 const userSchema = new Schema({
 	// the username and password are added by passportLocalMongoose
@@ -23,6 +29,8 @@ const userSchema = new Schema({
 	},
 	country: { 
 		type: String, 
+		enum: COUNTRIES,
+		default: "Ukraine",
 		required: true 
 	},
 	//isTraveler: Boolean,

@@ -6,7 +6,7 @@
 					Sovenirs Delivery
 				</router-link>
         <a class="gh-btn navbar-item" title="Github" id="gh-btn" target="_blank" aria-label="Star on GitHub" href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery">
-          <i class="fa fa-github" aria-hidden="true"></i>
+          <i class="fa fa-github fa-2" aria-hidden="true"></i>
         </a>
         
 
@@ -53,6 +53,34 @@
 </template>
 
 <script>
+//for navbar
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "navbar-burger" elements
+  var navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if (navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    navbarBurgers.forEach(function (el) {
+      el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+//end of the code for navbar
+
 import { logout } from '@/api/auth'
 
 export default {
@@ -79,5 +107,11 @@ export default {
 }
 .container {
 	padding-top: 40px;
+}
+.fa-2 {
+	font-size: 1.5rem;
+}
+.navbar {
+	font-size: 1.2rem;
 }
 </style>
