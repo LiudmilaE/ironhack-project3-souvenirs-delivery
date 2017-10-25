@@ -1,15 +1,35 @@
 const express = require('express');
 const router = express.Router();
-//const User = require('../models/user');
+const passport = require('passport');
+const config = require('../config');
 const Trip = require('../models/trip');
 
 //trip endpoints
 router.get('/', (req,res,next) => {
-	Trip.find({}, 'from to tripDate status _id')
+	Trip.find({}, 'from to tripDate deliveryPrice _id')
 	.then(trips => {
 		res.json(trips);
 	})
 	.catch(err => next(err));
+});
+
+router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next) => {
+	const { from, to, tripDate, deliveryPrice} = req.body;
+	const travelerId = req.user._id;
+	const trip = new Trip({
+		from, 
+		to, 
+		tripDate, 
+		travelerId, 
+		deliveryPrice
+	});
+	console.log(trip);
+
+	trip.save()
+		.then(trip => {
+			res.json(trip);
+		})
+		.catch(err => next(err));
 });
 
 router.get('/:id', (req, res, next) => {
@@ -18,23 +38,6 @@ router.get('/:id', (req, res, next) => {
 		res.json(trip);
 	})
 	.catch(err => next(err));
-});
-
-router.post('/', (req,res,next) => {
-	const { from, to, tripDate, travelerId, status } = req.body;
-	const trip = new Trip({
-		from, 
-		to, 
-		tripDate, 
-		travelerId, 
-		status
-	});
-
-	trip.save()
-		.then(trip => {
-			res.json(trip);
-		})
-		.catch(err => next(err));
 });
 
 router.patch('/:id', (req, res, next) => {

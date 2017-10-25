@@ -4,6 +4,7 @@ import Home from './Home';
 import Signup from './Signup';
 import Login from './Login';
 import Profile from './Profile';
+import Trips from './Trips';
 import TripForm from './TripForm';
 import { checkUser } from '@/api/auth';
 
@@ -38,12 +39,20 @@ const router = new Router({
 			},
 		},
 		{
+			path: '/trips',
+			component: Trips,
+			meta: {
+				requiresAuth: true,
+			},
+		},
+		{
 			path: '/trips/new',
 			component: TripForm,
 			meta: {
 				requiresAuth: true,
 			},
 		},
+		
 	],
 });
 

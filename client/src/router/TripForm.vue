@@ -3,7 +3,7 @@
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error.message }}
 		</b-notification>
-		<form @submit.prevent="">
+		<form @submit.prevent="addTrip">
 			<b-field label="Country, you will travel from">
 				<b-select
           v-model="from"
@@ -28,8 +28,8 @@
 				<b-input type="date" v-model="tripDate" required maxlength="30"></b-input>
 			</b-field>
 
-			<b-field label="Delivery Price">
-				<b-input v-model="deliveryPrice" required maxlength="30"></b-input>
+			<b-field label="Delivery Price in USD">
+				<b-input type="number" v-model="deliveryPrice" required maxlength="30"></b-input>
 			</b-field>
 
 			<button class="button is-primary">Add trip details</button>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+	import { addTrip } from '@/api/trips'
+
 	export default {
 		data () {
 			return {
@@ -51,7 +53,25 @@
 				deliveryPrice: '',
 				error: null
 			}
-		}
+		},
+		methods: { 
+			addTrip () {
+				this.error = null;
+				addTrip({
+					from: this.from,
+					to: this.to,
+					tripDate: this.tripDate,
+					deliveryPrice: this.deliveryPrice,
+				})
+				.then(() => {
+					this.$router.push('/');
+				}).catch(err => {
+					this.error = err.response.data.error
+					console.error('Trip add err', err.response.data.error);
+				});
+				
+			} 
+		},
 	}
 </script>
 

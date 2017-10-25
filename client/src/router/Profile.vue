@@ -1,5 +1,11 @@
 <template>
-	<p  v-if="$root.user">Hi, {{ $root.user }}!</p>
+	<div class="container">
+		<p  v-if="$root.user">Hi, {{ $root.user }}!</p>
+		<br>
+
+		<router-link to="/trips/new"><span class="button is-primary is-large is-outlined" id="trip-btn">Register your trip</span></router-link>
+		<br>
+	</div>
 </template>
 
 <script>
