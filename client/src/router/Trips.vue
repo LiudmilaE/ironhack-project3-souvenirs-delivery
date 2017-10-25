@@ -1,7 +1,7 @@
 <template>
 	<section class="container">
 		<h2 class="title">Trips Page {{ trips }}</h2>
-		<div v-if="trips && trips.length>0">
+		<div v-if="trips && trips.length>0" class="column">
 			<trip-card v-for="trip in trips" :trip="trip"></trip-card>
 		</div>
 		<p class="subtitle" v-else>No trips found...</p>
@@ -21,7 +21,7 @@
 		components: {
 			TripCard,
 		},
-		create() {
+		created() {
 	    showTrips()
 	     	.then(response => {
 	      		this.trips = response.data;
