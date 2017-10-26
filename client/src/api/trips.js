@@ -27,7 +27,6 @@ export function addTrip (tripInfo) {
 		});
 }
 
-//TODO
 export function updateTrip (id, data) {
 	return tripsApi
 		.patch('/'+id, data)

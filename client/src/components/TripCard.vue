@@ -26,7 +26,7 @@
         </button>
 
         <b-modal :active.sync="isComponentModalActive" has-modal-card>
-            <order-form v-bind="formProps"></order-form>
+            <order-form :trip="trip"></order-form>
         </b-modal>
 		</footer>
 	</div>
@@ -43,7 +43,6 @@
 			return {
 				user: this.$root.user || null,
 				isComponentModalActive: false,
-				formProps: {},
 				order: '',
 				showForm: false,
 			}
@@ -59,7 +58,7 @@
 				deleteTrip(this.trip._id);
 				this.$router.push('/');
 			}
-	}
+		}
 	}
 	
 </script>
