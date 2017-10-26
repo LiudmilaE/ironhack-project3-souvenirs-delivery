@@ -8,11 +8,18 @@ const tripsApi = axios.create({
 	baseURL: 'http://localhost:3000/api/trips',
 });
 
-export function showTrips () {
+export function showTrips (query) {
+	if (query) {
+		let param = query ? '?from='+ query : '';
+		return tripsApi
+		.get('/'+ param)
+		.then(response => {
+			return response.data;
+		});
+	}
 	return tripsApi
 		.get('/')
 		.then(response => {
-			console.log(response);
 			return response.data;
 		});
 }

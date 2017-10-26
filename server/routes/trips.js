@@ -7,11 +7,12 @@ const Trip = require('../models/trip');
 //trip endpoints
 router.get('/', (req,res,next) => {
 	let attribute = req.query.from; //search by country 'from'
+	console.log(req.query);
 	let param = {}
 	if (attribute) { 
 		param = { from: attribute }
 	 }
-	Trip.find(param, 'from to tripDate deliveryPrice _id')
+	Trip.find(param, '_id from to tripDate travelerId deliveryPrice acceptOrders orders')
 	.then(trips => {
 		res.json(trips);
 	})

@@ -32,15 +32,15 @@
 			UserCard,
 			TripCard,
 		},
-		methods: {
-			search () {
-				showTrips().then(response => {
-					this.trips = response.data;
-					});
-					//by country
+		// methods: {
+		// 	search () {
+		// 		showTrips(this.query).then(response => {
+		// 			this.trips = response.data;
+		// 			});
+		// 			//by country
 
-					console.log('searchTraveler was called!');
-			}
-		}
+		// 			console.log('searchTraveler was called!');
+		// 	}
+		// }
 	}
 </script>

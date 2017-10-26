@@ -22,16 +22,11 @@
 			TripCard,
 		},
 		created() {
-	    showTrips()
-	     	.then(response => {
-	      		this.trips = response.data;
-						
-						console.log(this.$el, response.data) // => 'not updated'
-	      this.$nextTick(function () {
-	        console.log(this.$el) // => 'updated'
-	      })
-			});
-	  }
+			showTrips().then(trips => { 
+				this.trips = trips
+			 })
+
+		}
 	}
 	
 </script>
