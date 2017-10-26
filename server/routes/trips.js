@@ -45,8 +45,7 @@ router.get('/:id', (req, res, next) => {
 	.catch(err => next(err));
 });
 
-router.patch('/:id', (req, res, next) => {
-	console.log(req.body);
+router.patch('/:id', passport.authenticate('jwt', config.jwtSession), (req, res, next) => {
 	Trip.findByIdAndUpdate(req.params.id, req.body, { new: true})
 		.then(trip => {
 			res.json(trip);
