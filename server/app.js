@@ -59,9 +59,11 @@ passport.use(strategy);
 
 const authRoutes = require('./routes/auth');
 const tripsRoutes = require('./routes/trips');
+const ordersRoutes = require('./routes/orders');
 
 app.use('/api', authRoutes);
 app.use('/api/trips', tripsRoutes);
+app.use('/api/orders', ordersRoutes);
 
 // protecting the route
 app.get(

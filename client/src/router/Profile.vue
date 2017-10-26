@@ -4,8 +4,12 @@
 		<br>
 		<user-card :user="user"></user-card>
 		<br>
-
-		<router-link to="/trips/new"><span class="button is-primary is-large is-outlined" id="trip-btn">Register your new trip</span></router-link>
+		<div v-if="trips && trips.length>0" class="column">
+			<h3>Your trips</h3>
+			<trip-card v-for="trip in trips" :trip="trip" class="column"></trip-card>
+		</div>
+		<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
+		<router-link to="#"><span class="button is-primary is-large is-outlined">Make an oder</span></router-link>
 		<br>
 	</div>
 </template>
@@ -13,6 +17,7 @@
 <script>
 	import UserCard from '@/components/UserCard'
 	import TripCard from '@/components/TripCard'
+	import { showTrips } from '@/api/trips'
 
 	export default {
 		data () {
@@ -20,6 +25,12 @@
 				user: this.$root.user || null,
 				trips: []
 			}
+		},
+		created() {
+			showTrips().then(trips => { 
+				let id = this.$root.user._id
+				this.trips = trips.filter(trip => trip.travelerId === id);
+			 })
 		},
 		components: {
 			UserCard,
@@ -32,6 +43,7 @@
 			findUserOrders(){
 				console.log('findUserOrders was called');
 			},
+
 		}
 	}
 </script>

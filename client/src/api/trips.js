@@ -9,6 +9,7 @@ const tripsApi = axios.create({
 });
 
 export function showTrips (query) {
+	//TODO
 	if (query) {
 		let param = query ? '?from='+ query : '';
 		return tripsApi
@@ -34,5 +35,17 @@ export function addTrip (tripInfo) {
 
 //TODO
 export function updateTrip () {
+	return tripsApi
+		.patch('/:id')
+		.then(response => {
+			return response.data
+		});
+}
 
+export function deleteTrip () {
+	return tripsApi
+		.delete('/:id')
+		.then(response => {
+			console.log("Trip is deleted")
+		});
 }

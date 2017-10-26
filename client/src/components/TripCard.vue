@@ -26,6 +26,9 @@
 </template>
 
 <script>
+	import { showTrips, updateTrip, deleteTrip } from '@/api/trips' // ?? maybe update delete only in profile
+
+
 	export default {
 		data () {
 			return {
@@ -34,11 +37,15 @@
 		},
 		props: ['trip'],
 		methods: {
-			search () {
-				searchTrip(
-					console.log('searchTrip was called!'));
+			updateTrip() {
+
+			},
+			delete () {
+				// logout(this.$root);
+				delete
+				this.$router.push('/');
 			}
-		}
+	}
 	}
 	
 </script>
