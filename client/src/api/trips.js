@@ -28,9 +28,9 @@ export function addTrip (tripInfo) {
 }
 
 //TODO
-export function updateTrip (id) {
+export function updateTrip (id, data) {
 	return tripsApi
-		.patch('/'+id)
+		.patch('/'+id, data)
 		.then(response => {
 			return response.data
 		});

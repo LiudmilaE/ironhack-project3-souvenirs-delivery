@@ -37,11 +37,5 @@
 			UserCard,
 			TripCard
 		},
-		methods: {
-			findUserOrders(){
-				console.log('findUserOrders was called');
-			},
-
-		}
 	}
 </script>

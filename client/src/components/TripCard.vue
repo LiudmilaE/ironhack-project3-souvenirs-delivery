@@ -8,12 +8,15 @@
 		<div class="card-content">
 			<div class="content">
 				<p>Traveler {{ trip.travelerId }}</p>
+				<p v-if="trip.acceptOrders">Still accept orders</p>
+				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
 				<time>{{ trip.tripDate }}</time>
 			</div>
+			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
-			<a href="#" class="card-footer-item">Edit</a>
+			<a href="#" class="card-footer-item" @click.prevent="showForm=!showForm">Edit</a>
 			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item">Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
@@ -40,7 +43,9 @@
 			return {
 				user: this.$root.user || null,
 				isComponentModalActive: false,
-				order: ''
+				formProps: {},
+				order: '',
+				showForm: false,
 			}
 		},
 		components: {
@@ -49,9 +54,6 @@
     },
 		props: ['trip'],
 		methods: {
-			updateTrip() {
-
-			},
 			deleteTrip () {
 				// let id = this.id
 				deleteTrip(this.trip._id);

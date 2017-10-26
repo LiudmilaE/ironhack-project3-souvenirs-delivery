@@ -3,36 +3,58 @@
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error.message }}
 		</b-notification>
-		<form @submit.prevent="trip ? updateTrip : addTrip">
-			<b-field label="Country, you will travel from">
-				<b-select
-          v-model="from"
-          icon="globe"
-          icon-pack="fa">
-          <option disabled value="">Please select one</option>
-          <option v-for="option in options" :value="option">{{option}}</option>
-        </b-select>
-			</b-field>
-
-			<b-field label="Country, you are going to">
-				<b-select
-          v-model="to"
-          icon="globe"
-          icon-pack="fa">
-          <option disabled value="">Please select one</option>
-          <option v-for="option in options" :value="option">{{option}}</option>
-        </b-select>
-			</b-field>
-
+		<form @submit.prevent="updateTrip">
 			<b-field label="Trip Date">
 				<b-input type="date" v-model="tripDate" required maxlength="30"></b-input>
+			</b-field>
+
+			<b-field label="Still has space to accept orders?">
+				<div class="field">
+            <b-checkbox v-model="acceptOrders">
+                {{ acceptOrders ? "Yes" : "No"}}
+            </b-checkbox>
+        </div>
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
 				<b-input type="number" v-model="deliveryPrice" required maxlength="30"></b-input>
 			</b-field>
 
-			<button class="button is-primary">Add trip details</button>
+			<button class="button is-primary">Edit trip details</button>
 		</form>
 	</div>
 </template>
+
+<script>
+	import { updateTrip } from '@/api/trips'
+
+	export default {
+		data () {
+			return {
+				tripDate: '',
+				deliveryPrice: '',
+				acceptOrders: true,
+				error: null
+			}
+		},
+		props: ['trip'],
+		methods: { 
+			updateTrip () {
+				this.error = null;
+				let data = {
+					acceptOrders: this.acceptOrders,
+					tripDate: this.tripDate,
+					deliveryPrice: this.deliveryPrice,
+				};
+				updateTrip(this.trip._id, data)
+				.then(() => {
+					this.$router.push('/');
+				}).catch(err => {
+					this.error = err.response.data.error
+					console.error('Trip edit err', err.response.data.error);
+				});
+				
+			} 
+		},
+	}
+</script>
