@@ -6,27 +6,57 @@ const Order = require('../models/order');
 
 //order endpoints
 router.get('/', (req,res,next) => {
-	Order.find({}, '_id clientId travelerId status souvenirTitle description country image')
+	Order.find({}, '_id clientId tripId travelerId status souvenirTitle description')
 	.then(orders => {
 		res.json(orders);
 	})
 	.catch(err => next(err));
 });
 
+router.get('/:id', (req, res, next) => {
+	Order.findById(req.params.id)
+	.then(order => {
+		res.json(order);
+	})
+	.catch(err => next(err));
+});
+
 router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next) => {
-	const { tripId, souvenirtitle,  } = req.body;
+	const { travelerId, tripId, souvenirTitle, description } = req.body;
 	const clientId = req.user._id;
 	const order = new Order({
+		clientId,
 		travelerId, 
-		souvenirId, 
+		tripId,
+		souvenirTitle,
+		description 
 	});
-	console.log(order);
 
 	order.save()
 		.then(order => {
 			res.json(order);
 		})
 		.catch(err => next(err));
+});
+
+router.patch('/:id', passport.authenticate('jwt', config.jwtSession), (req, res, next) => {
+	Order.findByIdAndUpdate(req.params.id, req.body, { new: true})
+		.then(order => {
+			res.json(order);
+		})
+		.catch(err => next(err));
+});
+
+router.delete('/:id', (req, res, next) => {
+	Order.findByIdAndRemove(req.params.id)
+		.then(order => {
+			if (!order) {
+				return res.status(404).json({
+					message: `Order with id '${req.params.id}' doesn't exist`,
+				});
+			}
+			res.json(order);
+		})
 });
 
 module.exports = router;

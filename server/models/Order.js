@@ -20,6 +20,10 @@ const orderSchema = new Schema({
 		type: Schema.Types.ObjectId, 
 		ref: 'User' 
 	},
+	tripId: {
+		type: Schema.Types.ObjectId, 
+		ref: 'Trip'
+	},
 	status: {
 		type: String,
 		enum: STATUSES,
