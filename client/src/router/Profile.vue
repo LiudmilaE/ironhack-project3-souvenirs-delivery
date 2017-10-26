@@ -9,7 +9,7 @@
 			<trip-card v-for="trip in trips" :trip="trip" class="column"></trip-card>
 		</div>
 		<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
-		<router-link to="#"><span class="button is-primary is-large is-outlined">Make an oder</span></router-link>
+		<!-- <router-link to="#"><span class="button is-primary is-large is-outlined">Make an oder</span></router-link> -->
 		<br>
 	</div>
 </template>

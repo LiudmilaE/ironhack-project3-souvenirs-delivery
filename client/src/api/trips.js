@@ -10,16 +10,10 @@ const tripsApi = axios.create({
 
 export function showTrips (query) {
 	//TODO
-	if (query) {
-		let param = query ? '?from='+ query : '';
-		return tripsApi
-		.get('/'+ param)
-		.then(response => {
-			return response.data;
-		});
-	}
 	return tripsApi
-		.get('/')
+		.get('/', {
+			params: query
+		})
 		.then(response => {
 			return response.data;
 		});

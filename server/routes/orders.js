@@ -14,7 +14,7 @@ router.get('/', (req,res,next) => {
 });
 
 router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next) => {
-	const { travelerId, souvenirId } = req.body;
+	const { tripId, souvenirtitle,  } = req.body;
 	const clientId = req.user._id;
 	const order = new Order({
 		travelerId, 

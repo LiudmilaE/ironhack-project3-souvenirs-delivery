@@ -14,10 +14,12 @@ const orderSchema = new Schema({
 	clientId: { 
 		type: Schema.Types.ObjectId,
 		required: true, 
-		ref: 'User' },
+		ref: 'User' 
+	},
 	travelerId: { 
 		type: Schema.Types.ObjectId, 
-		ref: 'User' },
+		ref: 'User' 
+	},
 	status: {
 		type: String,
 		enum: STATUSES,

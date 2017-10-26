@@ -1,6 +1,6 @@
 <template>
 	<section class="container">
-		<h2 class="title">Trips Page {{ trips }}</h2>
+		<h2 class="title">Trips Page</h2>
 		<div v-if="trips && trips.length>0" class="column">
 			<trip-card v-for="trip in trips" :trip="trip"></trip-card>
 		</div>
@@ -22,7 +22,7 @@
 			TripCard,
 		},
 		created() {
-			showTrips().then(trips => { 
+			showTrips(this.$route.query).then(trips => { 
 				this.trips = trips
 			 })
 

@@ -14,9 +14,7 @@
 		</div>
 
 		<div class="content">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			Phasellus nec iaculis mauris.
-			
+			Here you can see the list of orders and trips. You can edited the information.	
 		</div>
 	</div>
 </div>

@@ -7,7 +7,7 @@ const Trip = require('../models/trip');
 //trip endpoints
 router.get('/', (req,res,next) => {
 	let attribute = req.query.from; //search by country 'from'
-	console.log(req.query);
+	console.log('query', req.query);
 	let param = {}
 	if (attribute) { 
 		param = { from: attribute }

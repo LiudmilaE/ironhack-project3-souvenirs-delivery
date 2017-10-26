@@ -33,14 +33,6 @@ const userSchema = new Schema({
 		required: true 
 	},
 	//isTraveler: Boolean,
-	myOrders: [{ 
-		type: Schema.Types.ObjectId, 
-		ref: 'Order' 
-	}],
-	trips: [{ 
-		type: Schema.Types.ObjectId, 
-		ref: 'Trip' 
-	}],
 });
 
 userSchema.plugin(passportLocalMongoose);
