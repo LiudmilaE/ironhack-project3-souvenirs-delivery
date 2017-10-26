@@ -18,9 +18,8 @@
 			</div>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
-			<!-- <a href="#" class="card-footer-item">Save</a> -->
 			<a href="#" class="card-footer-item">Edit</a>
-			<a href="#" class="card-footer-item">Delete</a>
+			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item">Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
         <button class="button is-primary is-medium"
@@ -56,10 +55,10 @@
 			updateTrip() {
 
 			},
-			delete () {
-				// logout(this.$root);
-				deleteTrip();
-				this.$router.push('/profile');
+			deleteTrip () {
+				// let id = this.id
+				deleteTrip(this.trip._id);
+				this.$router.push('/');
 			}
 	}
 	}

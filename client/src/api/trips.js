@@ -28,17 +28,17 @@ export function addTrip (tripInfo) {
 }
 
 //TODO
-export function updateTrip () {
+export function updateTrip (id) {
 	return tripsApi
-		.patch('/:id')
+		.patch('/'+id)
 		.then(response => {
 			return response.data
 		});
 }
 
-export function deleteTrip () {
+export function deleteTrip (id) {
 	return tripsApi
-		.delete('/:id')
+		.delete('/'+id)
 		.then(response => {
 			console.log("Trip is deleted")
 		});
