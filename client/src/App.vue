@@ -95,6 +95,9 @@ export default {
 </script>
 
 <style>
+body {
+	
+}
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -107,6 +110,7 @@ export default {
 }
 .container {
 	padding-top: 40px;
+	padding-bottom: 20px;
 }
 .fa-2 {
 	font-size: 1.5rem;

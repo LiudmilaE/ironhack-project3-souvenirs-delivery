@@ -4,11 +4,6 @@
 			<p class="card-header-title">
 				Trip from {{ trip.from }} to {{ trip.to }}.
 			</p>
-			<!-- <a href="#" class="card-header-icon" aria-label="more options">
-				<span class="icon">
-					<i class="fa fa-angle-down" aria-hidden="true"></i>
-				</span>
-			</a> -->
 		</header>
 		<div class="card-content">
 			<div class="content">
@@ -36,6 +31,7 @@
 
 <script>
 	import OrderForm from '@/components/OrderForm'
+	import TripEditForm from '@/components/TripEditForm'
 	import { showTrips, updateTrip, deleteTrip } from '@/api/trips' // ?? maybe update delete only in profile
 
 
@@ -48,7 +44,8 @@
 			}
 		},
 		components: {
-      OrderForm
+      OrderForm,
+      TripEditForm,
     },
 		props: ['trip'],
 		methods: {

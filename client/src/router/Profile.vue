@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<p  v-if="$root.user">Hi, {{ $root.user.firstName }}!</p>
+		<h2 class="title" v-if="$root.user">Welcome to your profile page!</h2>
 		<br>
 		<user-card :user="user"></user-card>
 		<br>
@@ -27,6 +27,7 @@
 			}
 		},
 		created() {
+			//show user's trips
 			showTrips().then(trips => { 
 				let id = this.$root.user._id
 				this.trips = trips.filter(trip => trip.travelerId === id);
@@ -37,9 +38,6 @@
 			TripCard
 		},
 		methods: {
-			findUserTrips(userId){
-				console.log('findUserTrips was called');
-			},
 			findUserOrders(){
 				console.log('findUserOrders was called');
 			},
