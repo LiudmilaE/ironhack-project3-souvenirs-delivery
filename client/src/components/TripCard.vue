@@ -2,6 +2,7 @@
 	<div class="card" :trip="trip">
 		<header class="card-header">
 			<p class="card-header-title">
+				<span class="emoji">&#x2708</span>
 				Trip from {{ trip.from }} to {{ trip.to }}.
 			</p>
 		</header>
@@ -12,6 +13,9 @@
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
 				<time>{{ trip.tripDate }}</time>
+				<div v-if="orders.length>0"> 
+					<order-card :order="tripOrder" v-for="tripOrder in orders"></order-card>
+				</div>
 			</div>
 			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
 		</div>
@@ -34,8 +38,10 @@
 
 <script>
 	import OrderForm from '@/components/OrderForm'
+	import OrderCard from '@/components/OrderCard'
 	import TripEditForm from '@/components/TripEditForm'
 	import { showTrips, updateTrip, deleteTrip } from '@/api/trips' // ?? maybe update delete only in profile
+	import { showOrders } from '@/api/orders'
 
 
 	export default {
@@ -45,11 +51,13 @@
 				isComponentModalActive: false,
 				order: '',
 				showForm: false,
+				orders: []
 			}
 		},
 		components: {
       OrderForm,
       TripEditForm,
+      OrderCard,
     },
 		props: ['trip'],
 		methods: {
@@ -58,7 +66,14 @@
 				deleteTrip(this.trip._id);
 				this.$router.push('/');
 			}
-		}
+		},
+		created() {
+			//show trip's orders
+			showOrders().then(orders => { 
+				let id = this.trip._id
+				this.orders = orders.filter(order => order.tripId === id);
+			 })
+		},
 	}
 	
 </script>

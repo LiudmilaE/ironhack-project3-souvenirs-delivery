@@ -3,7 +3,8 @@
 		<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
 			<div class="navbar-brand">
 				<router-link class="navbar-item" to="/">
-					Sovenirs Delivery
+					<span class="emoji"> &#x2708 </span>
+					Sovenirs Delivery 
 				</router-link>
         <a class="gh-btn navbar-item" title="Github" id="gh-btn" target="_blank" aria-label="Star on GitHub" href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery">
           <i class="fa fa-github fa-2" aria-hidden="true"></i>
@@ -108,6 +109,9 @@ body {
 #vue-logo {
 	height: 15px;
 	width: 15px;
+}
+.emoji {
+	margin-right: 15px;
 }
 #app {
 	margin-top: 0;

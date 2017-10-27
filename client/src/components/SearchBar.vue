@@ -6,7 +6,7 @@
           icon="search" expanded v-model="query">
       </b-input>
       <p class="control">
-        <router-link :to=" query ? '/trips?from='+query : '/trips' "><span class="button is-primary" id="search-btn">Search</span></router-link>
+        <router-link :to=" query ? '/trips?from='+query : '/trips' "><button class="button is-primary" id="search-btn">Search</button></router-link>
       </p>
     </b-field>
 <!-- 
