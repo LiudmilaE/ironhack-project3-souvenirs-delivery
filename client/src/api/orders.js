@@ -25,13 +25,13 @@ export function addOrder (orderInfo) {
 }
 
 //TODO
-// export function updateOrder (id, data) {
-// 	return ordersApi
-// 		.patch('/'+id, data)
-// 		.then(response => {
-// 			return response.data
-// 		});
-// }
+export function updateOrder (id, data) {
+	return ordersApi
+		.patch('/'+id, data)
+		.then(response => {
+			return response.data
+		});
+}
 
 export function deleteOrder (id) {
 	return ordersApi

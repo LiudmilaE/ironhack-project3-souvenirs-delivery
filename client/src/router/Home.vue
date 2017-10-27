@@ -3,7 +3,7 @@
 		<section class="hero is-info is-medium">
 			<div class="hero-body" id="img-hero">
 				<div class="container">
-					<h1 class='title is-1'>Souvenir Delivery</h1>
+					<h1 class='title is-1'>Souvenirs Delivery</h1>
 					<h2 class="subtitle is-3">There is always something tasty to discover in any country!</h2>
 				</div>
 				

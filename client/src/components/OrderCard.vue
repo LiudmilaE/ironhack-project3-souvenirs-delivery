@@ -1,5 +1,5 @@
 <template>
-	<div class="card" :order="order">
+	<div class="box" :order="order">
 		<header class="card-header">
 			<p class="card-header-title">
 				Order of {{ order.souvenirTitle }}.
@@ -7,19 +7,22 @@
 		</header>
 		<div class="card-content">
 			<div class="content">
-				<p>Description:</p>
-				<p> {{ order.description }}</p>
+				<p>{{ order.description }}</p>
 			</div>
 			<!-- <trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form> -->
 		</div>
 		<footer class="card-footer" v-if="user && order.clientId === user._id">
 			<a href="#" @click.prevent="deleteOrder" class="card-footer-item">Delete</a>
 		</footer>
+		<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">
+			<a href="#" @click.prevent="acceptOrder" class="card-footer-item">Accept request</a>
+			<a href="#" @click.prevent="rejectOrder" class="card-footer-item">Reject request</a>
+		</footer>
 	</div>
 </template>
 
 <script>
-	import { deleteOrder } from "@/api/orders"
+	import { deleteOrder, updateOrder } from "@/api/orders"
 
 	export default {
 		data () {
@@ -33,7 +36,37 @@
 				// let id = this.id
 				deleteOrder(this.order._id);
 				this.$router.push('/');
+			},
+			acceptOrder () {
+				this.error = null;
+				let data = {
+					status: "accepted",
+				};
+				updateOrder(this.order._id, data)
+					.then(() => {
+					this.$router.push('/');
+				}).catch(err => {
+					this.error = err.response.data.error
+					console.error('Order edit err', err.response.data.error);
+				});
+			},
+			rejectOrder () {
+				this.error = null;
+				let data = {
+					status: "rejected",
+				};
+				updateOrder(this.order._id, data)
+					.then(() => {
+					this.$router.push('/');
+				}).catch(err => {
+					this.error = err.response.data.error
+					console.error('Order edit err', err.response.data.error);
+				});
 			}
 		}
 	}
 </script>
+
+<style scoped>
+
+</style>
