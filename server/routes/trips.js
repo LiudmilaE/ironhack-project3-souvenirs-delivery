@@ -11,7 +11,7 @@ router.get('/', (req,res,next) => {
 	if (attribute) { 
 		param = { from: attribute }
 	 }
-	Trip.find(param, '_id from to tripDate travelerId deliveryPrice acceptOrders orders')
+	Trip.find(param, '_id from to tripDate travelerId deliveryPrice acceptOrders')
 	.then(trips => {
 		res.json(trips);
 	})

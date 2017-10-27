@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="content">
-			Here you can see the list of orders and trips. You can edited the information.	
+			Current country - {{ user.country }}.	
 		</div>
 	</div>
 </div>

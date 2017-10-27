@@ -33,10 +33,6 @@ const tripSchema = new Schema({
 		type: Boolean, 
 		default: true 
 	},
-	ordersList: [{ 
-		type: Schema.Types.ObjectId, 
-		ref: 'Order' 
-	}],
 	deliveryPrice: { 
 		type: Number,
 		default: null 

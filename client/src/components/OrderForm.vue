@@ -1,5 +1,5 @@
 <template>
-		<form @submil.prevent="addOrder" :trip="trip">
+		<form @submit.prevent="addOrder" :trip="trip">
 		<div class="modal-card">
 			<header class="modal-card-head">
 				<p class="modal-card-title">Fill details of your order</p>
@@ -49,8 +49,9 @@
 					souvenirTitle: this.souvenirTitle,
 					description: this.description,
 				};
-				addOrder(orderInfo);
-				console.log(orderInfo);
+				addOrder(orderInfo).then(order => {
+					console.log("Order request is added!");
+				});
 				this.$router.push('/');
 				}
 			}

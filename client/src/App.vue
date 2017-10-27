@@ -43,8 +43,8 @@
 			<div class="container">
 		    <div class="content has-text-centered">
 		      <p> &copy;
-		        <strong>Souvenir Delivery</strong> by <a href="https://www.linkedin.com/in/liudmyla-iefremova/" target="_blank">Liudmyla Iefremova</a>. The source code is available on
-		        <a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>.
+		        <strong>Souvenir Delivery</strong> by <a href="https://www.linkedin.com/in/liudmyla-iefremova/" target="_blank">Liudmyla Iefremova</a>.The source code is available on
+		        <a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>.Powered by <a target="_blank" href="https://vuejs.org/" ><img src="./assets/logo.png" id="vue-logo" alt="Vue.js"></a>
 		      </p>
 		    </div>
 		  </div>
@@ -104,6 +104,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
 	margin-top: 60px;
+}
+#vue-logo {
+	height: 15px;
+	width: 15px;
 }
 #app {
 	margin-top: 0;

@@ -7,7 +7,7 @@
 		</header>
 		<div class="card-content">
 			<div class="content">
-				<p>Traveler {{ trip.travelerId }}</p>
+				<p>View traveler details {{ trip.travelerId }}</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
