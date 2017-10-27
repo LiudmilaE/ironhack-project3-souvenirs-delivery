@@ -1,3 +1,5 @@
+require("dotenv").config();
+const history = require('connect-history-api-fallback');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -9,8 +11,9 @@ const config = require('./config');
 const { Strategy, ExtractJwt } = require('passport-jwt');
 const cors = require('cors');
 
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/souvenirs-delivery', {
+mongoose.connect(process.env.MONGODB_URI, {
 	useMongoClient: true
 });
 
@@ -76,6 +79,10 @@ app.get(
 	res.json(req.user);
 	}
 );
+
+const clientRoot = path.join(__dirname, '../client/dist');
+app.use('/', express.static(clientRoot))
+app.use(history('index.html', { root: clientRoot }))
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

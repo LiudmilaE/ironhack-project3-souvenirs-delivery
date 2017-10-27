@@ -1,0 +1,21 @@
+{
+  "name": "ironhack-project3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server && npm install",
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery/issues"
+  },
+  "homepage": "https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery#readme"
+}
