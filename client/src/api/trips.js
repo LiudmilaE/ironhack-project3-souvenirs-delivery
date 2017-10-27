@@ -5,7 +5,7 @@ function errHandler(err){
 }
 
 const tripsApi = axios.create({
-	baseURL: 'http://localhost:3000/api/trips',
+	baseURL: process.env.NODE_ENV === "production" ? '/api/trips' : "http://localhost:3000/api/trips",
 });
 
 export function showTrips (query) {

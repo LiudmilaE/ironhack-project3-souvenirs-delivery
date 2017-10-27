@@ -5,7 +5,7 @@ function errHandler(err){
 }
 
 const ordersApi = axios.create({
-	baseURL: 'http://localhost:3000/api/orders',
+	baseURL: process.env.NODE_ENV === "production" ? '/api/orders' : "http://localhost:3000/api/orders",
 });
 
 export function showOrders () {
