@@ -12,6 +12,8 @@
 			<!-- <trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form> -->
 		</div>
 		<footer class="card-footer" v-if="user && order.clientId === user._id">
+			<!--TODO
+			 <a href="#" @click.prevent="deleteOrder" class="card-footer-item" v-if="order.status==='accepted'">Done</a> -->
 			<a href="#" @click.prevent="deleteOrder" class="card-footer-item">Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">

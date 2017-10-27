@@ -14,7 +14,7 @@
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
 				<time>{{ trip.tripDate }}</time>
 				<div v-if="orders.length>0"> 
-					<order-card :order="tripOrder" v-for="tripOrder in orders"></order-card>
+					<order-card :order="tripOrder" v-for="tripOrder in orders" :key="order.id"></order-card>
 				</div>
 			</div>
 			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
