@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './Home';
+import About from './About';
 import Signup from './Signup';
 import Login from './Login';
 import Profile from './Profile';
@@ -16,6 +17,10 @@ const router = new Router({
 		{
 			path: '/',
 			component: Home,
+		},
+		{
+			path: '/about',
+			component: About,
 		},
 		{
 			path: '/login',

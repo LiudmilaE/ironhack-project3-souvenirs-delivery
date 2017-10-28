@@ -11,7 +11,7 @@
 			</div>
 			
 		</section>
-		<section class="hero is-primary">
+		<section class="hero is-primary" id="extra-income">
 			<div class="hero-body">
 				<div class="container has-text-centered">
 					<h2 class="title is-2 is-spaced">
@@ -47,6 +47,13 @@
 	background-position: center;
 /*	padding-bottom: 10rem;
  	padding-top: 10rem;*/
+ }
+ #extra-income {
+ 	background: linear-gradient(141deg, #a894e0 0%, #7c62c4 51%, #7957d5 75%);
+ }
+
+ h1, h2 {
+ 	text-shadow: 1px 1px 2px grey; 
  }
 
 </style>
