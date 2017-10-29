@@ -3,7 +3,7 @@
 		<section class="hero is-info is-medium has-text-centered">
 			<div class="hero-body" id="img-about">
 				<div class="container">
-					<h2 class="title is-1">How does it work?</h2>
+					<h2 class="title is-2">How does it work?</h2>
 				</div>
 			</div>
 		</section>
@@ -11,7 +11,7 @@
 		<section class="container">
 			<div class="columns is-vcentered">
 				<div class="column is-6">
-					<p class="title has-text-centered">Going to travel?</p>
+					<p class="title is-3">Going to travel?</p>
 					<ol>
 						<li>Search for a traveler</li>
 						<li>Book free space in traveler's baggage</li>
@@ -22,7 +22,7 @@
 					<router-link to="/trips"><span class="button is-primary is-large is-outlined">Make an order</span></router-link>
 				</div>
 				<div class="column is-6">
-					<p class="title has-text-centered">Looking for a special food?</p>
+					<p class="title is-3">Looking for a special food?</p>
 					<ol>
 						<li>Register your travel</li>
 						<li>Get baggage sharing requests</li>
@@ -42,16 +42,34 @@
 </script>
 
 <style scoped>
+ol {
+	padding: 7%;
+}
+.container {
+	padding: 7%;
+}
+
  #img-about {
-	background-image:  url('../assets/flight-seat-travel-M.jpg'),
-	url('../assets/kitkat-wasabi-M.jpg');
+	background-image:  url('../assets/flight-seat-travel.jpg'),
+	url('../assets/kitkat-wasabi.jpg');
 	background-repeat: no-repeat,
-		 no-repeat;
+		 repeat;
 	background-position: left,
 		 right;
 /*	padding-bottom: 10rem;
  	padding-top: 10rem;*/
  }
+
+@media screen and (max-width: 768px) {
+	 #img-about {
+		background-image:  url('../assets/flight-seat-travel-S.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
+	/*	padding-bottom: 10rem;
+	 	padding-top: 10rem;*/
+	 }
+ }
+
  h2 {
  	text-shadow: 1px 1px 2px grey; 
  }

@@ -11,6 +11,10 @@
 
 			<button class="button is-primary">Login</button>
 		</form>
+		<p class="has-text-centered">
+You don't have an account yet? <router-link v-if="!$root.user" to="/signup">
+				Signup
+			</router-link></p>
 	</div>
 	<!-- <section>
 		<button class="button is-primary is-medium"
@@ -56,11 +60,14 @@
 </script>
 
 <style scoped>
+.container {
+	padding: 5%;
+}
 	.modal-card {
 		width: auto;
 	}
 	form {
-		max-width: 350px;
+		max-width: 340px;
 		margin: 10px auto;
 	}
 </style>

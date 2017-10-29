@@ -45,6 +45,8 @@
 
 			<button class="button is-primary">Signup</button>
 		</form>
+		<p class="has-text-centered">Already registered? <router-link v-if="!$root.user" to="/login">
+			Login</router-link></p>
 	</div>
 </template>
 
@@ -89,6 +91,9 @@
 </script>
 
 <style scoped>
+.container {
+	padding: 5%;
+}
 	form {
 		max-width: 350px;
 		margin: 10px auto;

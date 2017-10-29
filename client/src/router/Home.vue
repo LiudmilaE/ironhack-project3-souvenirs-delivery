@@ -14,10 +14,10 @@
 		<section class="hero is-primary" id="extra-income">
 			<div class="hero-body">
 				<div class="container has-text-centered">
-					<h2 class="title is-2 is-spaced">
+					<h2 class="title is-3 is-spaced">
 						Earn extra income
 					</h2>
-					<h3 class="subtitle is-3">Are you going to travel soon? Register your spare space in baggage, bring tasty food from your hometown and earn some extra income
+					<h3 class="subtitle is-4">Are you going to travel soon? Register your spare space in baggage, bring tasty food from your hometown and earn some extra income
 					</h3>
 					<router-link to="/trips/new"><span class="button is-primary is-large is-inverted is-outlined" id="trip-btn">Register your trip</span></router-link>
 				</div>
@@ -41,12 +41,18 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 768px) {
+	#img-hero {
+	background-image: url('../assets/globe-map-world-S.jpg');
+	background: cover;
+	background-position: center;
+ 	}
+}
+
  #img-hero {
 	background-image: url('../assets/globe-map-world-XL.jpg');
 	background: cover;
 	background-position: center;
-/*	padding-bottom: 10rem;
- 	padding-top: 10rem;*/
  }
  #extra-income {
  	background: linear-gradient(141deg, #a894e0 0%, #7c62c4 51%, #7957d5 75%);
