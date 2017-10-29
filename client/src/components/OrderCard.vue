@@ -2,6 +2,7 @@
 	<div class="box" :order="order">
 		<header class="card-header">
 			<p class="card-header-title">
+				<span class="emoji">&#x23F3</span>
 				Order of {{ order.souvenirTitle }}.
 			</p>
 		</header>

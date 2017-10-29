@@ -48,25 +48,21 @@ ol {
 .container {
 	padding: 7%;
 }
-
+@media screen and (min-width: 769px) {
  #img-about {
 	background-image:  url('../assets/flight-seat-travel.jpg'),
 	url('../assets/kitkat-wasabi.jpg');
-	background-repeat: no-repeat,
-		 repeat;
-	background-position: left,
-		 right;
-/*	padding-bottom: 10rem;
- 	padding-top: 10rem;*/
+	background-repeat: no-repeat, repeat;
+	background-position: left, right;
+	background-size: 50% 100%;
  }
+}
 
 @media screen and (max-width: 768px) {
 	 #img-about {
 		background-image:  url('../assets/flight-seat-travel-S.jpg');
 		background-repeat: no-repeat;
 		background-position: center;
-	/*	padding-bottom: 10rem;
-	 	padding-top: 10rem;*/
 	 }
  }
 

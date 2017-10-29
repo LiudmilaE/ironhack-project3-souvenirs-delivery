@@ -77,3 +77,9 @@
 	}
 	
 </script>
+
+<style>
+	.box {
+		max-width: 50%;
+	}
+</style>
