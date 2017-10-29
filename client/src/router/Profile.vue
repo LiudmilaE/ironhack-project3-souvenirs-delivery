@@ -8,12 +8,12 @@
 			<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
 			<!-- <router-link to="#"><span class="button is-primary is-large is-outlined">Make an oder</span></router-link> -->
 			<hr>
-			<h3 class="subtitle">Your trips</h3>
+			<h3 class="subtitle" v-if="trips.length>0">Your trips</h3>
 			<div v-if="trips.length>0" class="columns">
 					<trip-card v-for="trip in trips" :key="trip.id" :trip="trip" class="column"></trip-card>
 			</div>
 			<hr>
-			<h3 class="subtitle">Your orders</h3>
+			<h3 class="subtitle" v-if="orders.length>0">Your orders</h3>
 			<div v-if="orders.length>0" class="columns">
 					<order-card v-for="order in orders" :key="order.id" :order="order" class="column"></order-card>
 			</div>
