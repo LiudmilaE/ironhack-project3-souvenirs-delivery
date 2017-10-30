@@ -8,6 +8,7 @@ import Buefy from 'buefy';
 import 'buefy/lib/buefy.css';
 
 Vue.use(Buefy);
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false;
 

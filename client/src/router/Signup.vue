@@ -26,12 +26,9 @@
 					icon="globe"
 					icon-pack="fa">
 					<option disabled value="">Please select one</option>
-					<option v-for="option in options" :value="option">{{option}}</option>
-					
+					<option v-for="option in options" :value="option">{{option}}</option>			
 				</b-select>
-
 			</b-field>
-
 
 			<b-field label="Password">
 				<b-input
