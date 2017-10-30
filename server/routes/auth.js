@@ -82,4 +82,13 @@ router.post('/login', (req, res, next) => {
 	}
 });
 
+//get user details
+router.get('/users/:id', (req, res, next) => {
+	User.findById(req.params.id)
+	.then(user => {
+		res.json(user);
+	})
+	.catch(err => next(err));
+});
+
 module.exports = router;

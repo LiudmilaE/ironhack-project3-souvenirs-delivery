@@ -5,7 +5,7 @@
 		</b-notification>
 		<form @submit.prevent="signup">
 			<b-field label="Username">
-				<b-input v-model="username" required maxlength="30" autofocus></b-input>
+				<b-input v-model="username" required maxlength="30" autofocus v-focus></b-input>
 			</b-field>
 
 			<b-field label="Email">

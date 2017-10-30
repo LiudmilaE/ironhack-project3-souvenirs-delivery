@@ -8,7 +8,16 @@
 		</header>
 		<div class="card-content">
 			<div class="content">
-				<p v-if ="user && trip.travelerId !== user._id">View traveler details {{ trip.travelerId }}</p>
+				<p v-if ="user && trip.travelerId !== user._id">
+					<button class="button is-primary is-medium"
+									@click="showUserDetails(trip.travelerId)">
+									View traveler details
+							</button>
+
+							<b-modal :active.sync="isModalActive" has-modal-card>
+									<user-card :user="traveler"></user-card>
+							</b-modal>
+					</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
@@ -24,14 +33,14 @@
 			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item">Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
-        <button class="button is-primary is-medium"
-            @click="isComponentModalActive = true">
-            Add Order
-        </button>
+				<button class="button is-primary is-medium"
+						@click="isComponentModalActive = true">
+						Add Order
+				</button>
 
-        <b-modal :active.sync="isComponentModalActive" has-modal-card>
-            <order-form :trip="trip"></order-form>
-        </b-modal>
+				<b-modal :active.sync="isComponentModalActive" has-modal-card>
+						<order-form :trip="trip"></order-form>
+				</b-modal>
 		</footer>
 	</div>
 </template>
@@ -39,9 +48,11 @@
 <script>
 	import OrderForm from '@/components/OrderForm'
 	import OrderCard from '@/components/OrderCard'
+	import UserCard from '@/components/UserCard'
 	import TripEditForm from '@/components/TripEditForm'
 	import { showTrips, updateTrip, deleteTrip } from '@/api/trips' // ?? maybe update delete only in profile
 	import { showOrders } from '@/api/orders'
+	import { showUser } from '@/api/auth'
 
 
 	export default {
@@ -51,20 +62,29 @@
 				isComponentModalActive: false,
 				order: '',
 				showForm: false,
-				orders: []
+				orders: [],
+				isModalActive: false,
+				traveler: null,
 			}
 		},
 		components: {
-      OrderForm,
-      TripEditForm,
-      OrderCard,
-    },
+			OrderForm,
+			TripEditForm,
+			OrderCard,
+			UserCard
+		},
 		props: ['trip'],
 		methods: {
 			deleteTrip () {
 				// let id = this.id
 				deleteTrip(this.trip._id);
 				this.$router.push('/');
+			},
+			showUserDetails (id) {
+				showUser(id).then(user => {
+				this.traveler = user;
+				this.isModalActive = true;
+			});
 			}
 		},
 		created() {
@@ -72,7 +92,7 @@
 			showOrders().then(orders => { 
 				let id = this.trip._id
 				this.orders = orders.filter(order => order.tripId === id);
-			 })
+			 });
 		},
 	}
 	

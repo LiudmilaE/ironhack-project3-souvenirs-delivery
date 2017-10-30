@@ -6,22 +6,22 @@
 		<form @submit.prevent="addTrip">
 			<b-field label="Country, you will travel from">
 				<b-select
-          v-model="from"
-          icon="globe"
-          icon-pack="fa">
-          <option disabled value="">Please select one</option>
-          <option v-for="option in options" :value="option">{{option}}</option>
-        </b-select>
+					v-model="from"
+					icon="globe"
+					icon-pack="fa" v-focus>
+					<option disabled value="">Please select one</option>
+					<option v-for="option in options" :value="option">{{option}}</option>
+				</b-select>
 			</b-field>
 
 			<b-field label="Country, you are going to">
 				<b-select
-          v-model="to"
-          icon="globe"
-          icon-pack="fa">
-          <option disabled value="">Please select one</option>
-          <option v-for="option in options" :value="option">{{option}}</option>
-        </b-select>
+					v-model="to"
+					icon="globe"
+					icon-pack="fa">
+					<option disabled value="">Please select one</option>
+					<option v-for="option in options" :value="option">{{option}}</option>
+				</b-select>
 			</b-field>
 
 			<b-field label="Trip Date">
@@ -71,7 +71,7 @@
 				});
 				
 			} 
-		},
+		}
 	}
 </script>
 

@@ -12,6 +12,19 @@ Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false;
 
+// Register a global custom directive called v-focus
+Vue.directive('focus', {
+  // When the bound element is inserted into the DOM...
+  inserted: function (el) {
+    const tag = el.tagName.toLowerCase()
+    if (tag !== 'input' && tag !== 'select') {
+      el = el.querySelector('input, select')
+    }
+    // Focus the element
+    if (el) el.focus()
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

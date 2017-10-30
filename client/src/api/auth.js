@@ -27,6 +27,14 @@ export function checkUser(vm) {
 	}
 }
 
+export function showUser(id) {
+	return auth
+		.get('/users/'+id)
+		.then(response => {
+			return response.data;
+		});
+}
+
 export function login(username, password, vm) {
 	return auth
 		.post('/login', {

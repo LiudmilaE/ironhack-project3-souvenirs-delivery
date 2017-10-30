@@ -26,12 +26,6 @@
 			return {}
 		},
 		props: ['user'],
-		methods: {
-			search () {
-				searchTraveler(
-					console.log('searchTraveler was called!'));
-			}
-		}
 	}
 	
 </script>

@@ -5,7 +5,7 @@
 		</b-notification>
 		<form @submit.prevent="updateTrip">
 			<b-field label="Trip Date">
-				<b-input type="date" v-model="tripDate" required maxlength="30"></b-input>
+				<b-input type="date" v-model="tripDate" required maxlength="30" class="focus-field"></b-input>
 			</b-field>
 
 			<b-field label="Still has space to accept orders?">

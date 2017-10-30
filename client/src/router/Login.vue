@@ -2,7 +2,7 @@
 	<div class="container">
 		<form @submit.prevent="login">
 			<b-field label="Username">
-						<b-input v-model="username" maxlength="50" autofocus></b-input>
+						<b-input v-model="username" maxlength="50" autofocus v-focus></b-input>
 				</b-field>
 
 				<b-field label="Password">
@@ -29,6 +29,7 @@ You don't have an account yet? <router-link v-if="!$root.user" to="/signup">
 </template>
 
 <script>
+
 	import { login } from '@/api/auth';
 	//import LoginForm from '@/components/LoginForm'
 
