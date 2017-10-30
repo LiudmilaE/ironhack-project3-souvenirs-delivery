@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Trip = require('../models/trip');
-const Souvenir = require('../models/souvenir');
+const Order = require('../models/order');
 
 mongoose.connect('mongodb://localhost/souvenirs-delivery', {
 	useMongoClient: true,
 });
+
 
 //4 functions:
 //connection to DB
@@ -24,3 +25,5 @@ F.E.  findIdWithProperty(master, 'title', 'Asterix & Obelix')*/
 :
 "https://res.cloudinary.com/he3fnadts/image/upload/v1509390814/my-images/zojxklmlsnwrp2h2hc5o.jpg"
 */
+
+mongoose.connection.close()

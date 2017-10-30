@@ -9,7 +9,7 @@
 			<br>
 			<button>Send</button>
 		</form>
-		<button @click.prevent="imgUrl='https://res.cloudinary.com/he3fnadts/image/upload/v1509390814/my-images/zojxklmlsnwrp2h2hc5o.jpg'">Update profile</button>
+		<button @click.prevent="saveChanges">Update profile</button>
 	</div>
 </template>
 

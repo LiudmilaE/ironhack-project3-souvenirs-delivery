@@ -23,16 +23,19 @@ const userSchema = new Schema({
 		type: String, 
 		required: true 
 	},
-	isAdmin: { 
-		type: Boolean, 
-		default: false 
-	},
+	// isAdmin: { 
+	// 	type: Boolean, 
+	// 	default: false 
+	// },
 	country: { 
 		type: String, 
 		enum: COUNTRIES,
 		required: true 
 	},
-	image: String,
+	image: { 
+		type: String, 
+		default: null 
+	},
 });
 
 userSchema.plugin(passportLocalMongoose);

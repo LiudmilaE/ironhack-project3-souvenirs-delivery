@@ -34,7 +34,7 @@
 	export default {
 		data () {
 			return {
-				user: this.$root.user || null,
+				user: showUser(this.$root.user._id) || this.$root.user || null,
 				trips: [],
 				orders: [],
 			}
