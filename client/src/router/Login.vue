@@ -2,7 +2,7 @@
 	<div class="container">
 		<form @submit.prevent="login">
 			<b-field label="Username">
-						<b-input v-model="username" maxlength="50"></b-input>
+						<b-input v-model="username" maxlength="50" autofocus></b-input>
 				</b-field>
 
 				<b-field label="Password">

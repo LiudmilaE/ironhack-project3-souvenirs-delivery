@@ -10,7 +10,7 @@
 						type="email"
 						v-model="email"
 						placeholder="Your email"
-						required>
+						required autofocus>
 					</b-input>
 				</b-field>
 				<b-field label="Password">

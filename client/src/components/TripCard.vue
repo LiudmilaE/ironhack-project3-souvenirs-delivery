@@ -1,5 +1,5 @@
 <template>
-	<div class="box" :trip="trip">
+	<div class="box trip" :trip="trip">
 		<header class="card-header">
 			<p class="card-header-title">
 				<span class="emoji">&#x2708</span>
@@ -8,7 +8,7 @@
 		</header>
 		<div class="card-content">
 			<div class="content">
-				<p v-if ="trip.travelerId !== user._id">View traveler details {{ trip.travelerId }}</p>
+				<p v-if ="user && trip.travelerId !== user._id">View traveler details {{ trip.travelerId }}</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}</p>
@@ -78,8 +78,7 @@
 	
 </script>
 
-<style>
-	.box {
-		max-width: 50%;
-	}
+<style scoped>
+
+	
 </style>

@@ -99,8 +99,10 @@ export default {
 </script>
 
 <style>
-body {
-	
+@media screen and (min-width: 769px) {
+.trip, .order {
+		max-width: 50%;
+	}
 }
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
