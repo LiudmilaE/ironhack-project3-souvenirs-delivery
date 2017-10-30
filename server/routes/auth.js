@@ -91,4 +91,13 @@ router.get('/users/:id', (req, res, next) => {
 	.catch(err => next(err));
 });
 
+//update avatar
+router.patch('/users/:id', passport.authenticate('jwt', config.jwtSession), (req, res, next) => {
+	User.findByIdAndUpdate(req.user._id, req.body, { new: true })
+		.then(user => {
+			res.json(user);
+		})
+		.catch(err => next(err));
+});
+
 module.exports = router;

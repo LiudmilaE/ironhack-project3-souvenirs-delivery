@@ -32,7 +32,7 @@ const userSchema = new Schema({
 		enum: COUNTRIES,
 		required: true 
 	},
-	//isTraveler: Boolean,
+	image: String,
 });
 
 userSchema.plugin(passportLocalMongoose);

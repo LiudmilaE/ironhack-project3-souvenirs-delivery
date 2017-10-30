@@ -35,6 +35,26 @@ export function showUser(id) {
 		});
 }
 
+export function updateUser(id, data) {
+	return auth
+		.patch('/users/'+id,data)
+		.then(response => {
+			return response.data;
+		});
+}
+
+export function uploadPicture(formData) {
+	return auth
+		.post('/images/upload', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		}).then(response => {
+				console.log(response.data);
+				return response.data;
+		});
+}
+
 export function login(username, password, vm) {
 	return auth
 		.post('/login', {

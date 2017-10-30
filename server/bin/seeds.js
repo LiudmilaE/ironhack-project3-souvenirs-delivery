@@ -19,3 +19,8 @@ mongoose.connect('mongodb://localhost/souvenirs-delivery', {
 	return el._id
 }
 F.E.  findIdWithProperty(master, 'title', 'Asterix & Obelix')*/
+
+/*secure_url
+:
+"https://res.cloudinary.com/he3fnadts/image/upload/v1509390814/my-images/zojxklmlsnwrp2h2hc5o.jpg"
+*/

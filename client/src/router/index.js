@@ -5,6 +5,7 @@ import About from './About';
 import Signup from './Signup';
 import Login from './Login';
 import Profile from './Profile';
+import UpdateProfileForm from './UpdateProfileForm';
 import Trips from './Trips';
 import TripForm from './TripForm';
 import { checkUser } from '@/api/auth';
@@ -39,6 +40,13 @@ const router = new Router({
 		{
 			path: '/profile',
 			component: Profile,
+			meta: {
+				requiresAuth: true,
+			},
+		},
+		{
+			path: '/profile/update',
+			component: UpdateProfileForm,
 			meta: {
 				requiresAuth: true,
 			},
