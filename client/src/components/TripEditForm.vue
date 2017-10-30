@@ -1,11 +1,11 @@
 <template>
-	<div class="container" :trip="trip">
+	<div class="box" :trip="trip">
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error.message }}
 		</b-notification>
 		<form @submit.prevent="updateTrip">
 			<b-field label="Trip Date">
-				<b-input type="date" v-model="tripDate" required maxlength="30" class="focus-field"></b-input>
+				<b-input type="date" v-model="tripDate" required maxlength="30" v-focus></b-input>
 			</b-field>
 
 			<b-field label="Still has space to accept orders?">
