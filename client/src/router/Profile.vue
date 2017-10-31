@@ -54,7 +54,9 @@
 			 });
 			showOrders().then(orders => { 
 				let id = this.$root.user._id
-				this.orders = orders.filter(order => order.clientId === id);
+				this.orders = orders.filter(order => {
+					let date = new Date(order.pickupDate);
+					return date > today && order.clientId === id});
 			 });
 			showUser(this.$root.user._id).then(user => {
 					this.user = user;

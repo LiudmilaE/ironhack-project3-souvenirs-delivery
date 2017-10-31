@@ -33,8 +33,9 @@
 				<time>Starts - {{ trip.tripDate | moment("dddd, MMMM Do YYYY") }}</time>
 				<br>
 				<time>Ends - {{ trip.endTripDate | moment("dddd, MMMM Do YYYY") }}</time>
-				<hr>
+				
 				<div v-if="orders.length>0"> 
+					<hr>
 					<order-card :order="tripOrder" v-for="tripOrder in orders" :key="order.id"></order-card>
 				</div>
 			</div>
