@@ -3,13 +3,23 @@
 		<header class="card-header">
 			<p class="card-header-title">
 				<span class="emoji">&#x23F3</span>
-				Order of {{ order.souvenirTitle }}.
+				Order of {{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
+				 / status - {{ order.status }}</em>
 			</p>
 		</header>
 		<div class="card-content">
 			<div class="content">
 				<p>{{ order.description }}</p>
+				<div v-if="user && order.clientId === user._id && order.status === 'accepted'">
+					<button class="button is-info is-small" @click="contactShow=!contactShow">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						{{ contactShow ? "Hide contact details" : "Show contact details"}}
+					</button>
+					<p v-if="contactShow">{{ email }}</p>
+				</div>
 			</div>
+			
+			<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
 			<!-- <trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form> -->
 		</div>
 		<footer class="card-footer" v-if="user && order.clientId === user._id">
@@ -26,14 +36,24 @@
 
 <script>
 	import { deleteOrder, updateOrder } from "@/api/orders"
+	import { showUser } from '@/api/auth'
 
 	export default {
 		data () {
 			return {
 				user: this.$root.user || null,
+				email: '',
+				contactShow: false,
 			}
 		},
 		props: ['order'],
+		created () {
+		
+			showUser(this.order.clientId).then(user => {
+				this.email = user.email;
+			});
+		
+		},
 		methods: {
 			deleteOrder () {
 				// let id = this.id
