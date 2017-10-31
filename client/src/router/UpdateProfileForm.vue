@@ -10,7 +10,7 @@
 							<b-select
 								v-model="country"
 								icon="globe"
-								icon-pack="fa" v-focus>
+								icon-pack="fa" expanded v-focus>
 								<option disabled value="">Please select one</option>
 								<option v-for="option in options" :value="option">{{option}}</option>			
 							</b-select>
@@ -25,15 +25,15 @@
 				<div class="tile is-parent avatar-update">
 	      	<article class="tile is-4 is-child box">
 	        	<p class="subtitle is-3">Your avatar</p>
-	         	<figure class="image is-128x128 avatar-update">
+	         	<figure class="image is-128x128">
 							<img v-if="user.image" :src="user.image" alt="profile photo">
-							<img v-else :src="imgUrl" v-if="imgUrl" width='100' height='150'>
 							<img v-if="!user.image" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+							<img :src="imgUrl" v-if="imgUrl" width='100' height='150'>
 						</figure>
 						<hr>
 						<form @submit.prevent="uploadPicture">
 							<input type="file" name="picture" @change="picture = $event.target.files[0]">
-							<button><i class="fa fa-picture-o" aria-hidden="true"></i>Save avatar</button>
+							<button><i class="fa fa-upload" aria-hidden="true"></i>Save avatar</button>
 						</form>
 	       	</article>
 	     	</div>

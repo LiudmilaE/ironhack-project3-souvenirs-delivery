@@ -9,8 +9,9 @@
 		<div class="card-content">
 			<div class="content">
 				<p v-if ="user && trip.travelerId !== user._id">
-					<button class="button is-primary is-medium"
+					<button class="button is-info is-medium"
 									@click="showUserDetails(trip.travelerId)">
+									<i class="fa fa-user" aria-hidden="true"></i>
 									View traveler details
 							</button>
 
@@ -30,7 +31,7 @@
 					</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
-				<p>Delivery price {{ trip.deliveryPrice }} USD</p>
+				<p>Delivery price {{ trip.deliveryPrice }}<i class="fa fa-usd" aria-hidden="true"></i></p>
 				<time>Starts - {{ trip.tripDate | moment("dddd, MMMM Do YYYY") }}</time>
 				<br>
 				<time>Ends - {{ trip.endTripDate | moment("dddd, MMMM Do YYYY") }}</time>
