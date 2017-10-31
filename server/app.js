@@ -9,6 +9,7 @@ const passport = require('passport');
 const User = require('./models/user');
 const config = require('./config');
 const { Strategy, ExtractJwt } = require('passport-jwt');
+const FacebookStrategy = require('passport-facebook');
 const cors = require('cors');
 
 
@@ -59,6 +60,42 @@ const strategy = new Strategy({
 );
 //tell passport to use this strategy
 passport.use(strategy);
+
+//facebook strategy
+passport.use(
+	new FacebookStrategy(
+		{
+			clientID: process.env.FB_CLIENT_ID,
+			clientSecret: process.env.FB_CLIENT_SECRET,
+			callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
+			profileFields: ['id', 'displayName', 'email'],
+		},
+		(accessToken, refreshToken, profile, cb) => {
+			User.findOne({
+				facebookId: profile.id,
+			})
+				.then(user => {
+					if (user) {
+						return user;
+					} else {
+						const user = new User({
+							// we need a username
+							username: profile.email,
+							name: profile.displayName,
+							facebookId: profile.id,
+						});
+						return user.save();
+					}
+				})
+				.then(user => {
+					cb(null, user);
+				})
+				.catch(err => cb(err));
+		}
+	)
+);
+//end of facebook strategy
+	
 
 const authRoutes = require('./routes/auth');
 const tripsRoutes = require('./routes/trips');

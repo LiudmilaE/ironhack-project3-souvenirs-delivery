@@ -10,27 +10,25 @@ const COUNTRIES = countriesDB.map(function(obj){
 
 
 const userSchema = new Schema({
+	//for social login
+	facebookId: String,
 	// the username and password are added by passportLocalMongoose
 	firstName: { 
 		type: String, 
-		required: true 
+		//required: true 
 	},
 	lastName: { 
 		type: String, 
-		required: true 
+		//required: true 
 	},
 	email: { 
 		type: String, 
-		required: true 
+		//required: true 
 	},
-	// isAdmin: { 
-	// 	type: Boolean, 
-	// 	default: false 
-	// },
 	country: { 
 		type: String, 
 		enum: COUNTRIES,
-		required: true 
+		//required: true 
 	},
 	image: { 
 		type: String, 

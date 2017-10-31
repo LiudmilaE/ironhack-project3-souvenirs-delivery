@@ -1,5 +1,7 @@
 <template>
 	<div class="container">
+		<!-- <a href="/auth/facebook">Login With Facebook</a> -->
+		<!-- <hr>OR -->
 		<form @submit.prevent="login">
 			<b-field label="Username">
 						<b-input v-model="username" maxlength="50" autofocus v-focus></b-input>

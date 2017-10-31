@@ -82,6 +82,24 @@ router.post('/login', (req, res, next) => {
 	}
 });
 
+//facebook login
+router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get(
+	'/auth/facebook/callback',
+	passport.authenticate('facebook', { failureRedirect: '/', session: false }),
+	(req, res) => {
+		console.log(req.user);
+		const payload = {
+			id: req.user.id,
+		};
+		const token = jwt.encode(payload, config.jwtSecret);
+		res.json({ token });
+	}
+);
+
+
+
 //get user details
 router.get('/users/:id', (req, res, next) => {
 	User.findById(req.params.id)
