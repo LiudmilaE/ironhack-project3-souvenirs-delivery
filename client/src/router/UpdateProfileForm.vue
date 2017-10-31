@@ -1,31 +1,43 @@
 <template>
 	<div class="container has-text-centered">
-		<div class="notification">
-			<h3 class="title">Edit your account</h3>
-			<hr>
-			<pre>{{ user }}</pre>
+		<div class="notification has-text-centered">
+			<h3 class="title is-2">Edit your account</h3>
+			<section class="tile is-anscestor">
+				<div class="tile is-parent avatar-update">
+	      	<article class="tile is-4 is-child box">
+	      		<p class="subtitle is-3">Current country</p>
+						<b-field :label="'You live in ' + user.country +'? Change :'">
+							<b-select
+								v-model="country"
+								icon="globe"
+								icon-pack="fa" v-focus>
+								<option disabled value="">Please select one</option>
+								<option v-for="option in options" :value="option">{{option}}</option>			
+							</b-select>
+						</b-field>
+					</article>
+	     	</div>
+			</section>
+
 			<hr>
 			
 			<section class="tile is-anscestor">
 				<div class="tile is-parent avatar-update">
-	      <article class="tile is-6 is-child box">
-	        <p class="title">Your avatar</p>
-	        <p class="subtitle">With an image</p>
-	         <figure class="image is-128x128 avatar-update">
+	      	<article class="tile is-4 is-child box">
+	        	<p class="subtitle is-3">Your avatar</p>
+	         	<figure class="image is-128x128 avatar-update">
 							<img v-if="user.image" :src="user.image" alt="profile photo">
 							<img v-else :src="imgUrl" v-if="imgUrl" width='100' height='150'>
 							<img v-if="!user.image" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
 						</figure>
 						<hr>
 						<form @submit.prevent="uploadPicture">
-						<input type="file" name="picture" @change="picture = $event.target.files[0]">
-						<button>Save avatar</button>
-					</form>
+							<input type="file" name="picture" @change="picture = $event.target.files[0]">
+							<button><i class="fa fa-picture-o" aria-hidden="true"></i>Save avatar</button>
+						</form>
 	       	</article>
-
-	       	
 	     	</div>
-				</section>
+			</section>
 
 			<hr>
 			<button @click.prevent="saveChanges" class="button is-primary is-large is-outlined">Update profile</button>
@@ -43,6 +55,11 @@ export default {
 			picture: '',
 			imgUrl: '',
 			user: showUser(this.$root.user._id) || this.$root.user || null,
+			country: '',
+				options: [
+					'Ukraine',
+					"France"
+				]
 		}
 	},
 	created() {
@@ -69,6 +86,9 @@ export default {
 				data = {
 					image: this.imgUrl,
 				};
+			}
+			if(this.country){
+				data.country = this.country;
 			}
 			updateUser(this.$root.user._id, data);
 			this.$router.push('/profile');

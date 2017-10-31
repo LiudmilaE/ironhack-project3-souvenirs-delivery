@@ -18,6 +18,16 @@
 									<user-card :user="traveler"></user-card>
 							</b-modal>
 					</p>
+					<p v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
+						<button class="button is-primary is-medium"
+								@click="isComponentModalActive = true">
+								Add Order
+						</button>
+
+						<b-modal :active.sync="isComponentModalActive" has-modal-card>
+								<order-form :trip="trip"></order-form>
+						</b-modal>
+					</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }} USD</p>
@@ -32,18 +42,8 @@
 			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
-			<a href="#" class="card-footer-item" @click.prevent="showForm=!showForm">Edit</a>
-			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item">Delete</a>
-		</footer>
-		<footer class="card-footer" v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
-				<button class="button is-primary is-medium"
-						@click="isComponentModalActive = true">
-						Add Order
-				</button>
-
-				<b-modal :active.sync="isComponentModalActive" has-modal-card>
-						<order-form :trip="trip"></order-form>
-				</b-modal>
+			<a href="#" class="card-footer-item" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
 		</footer>
 	</div>
 </template>
