@@ -11,10 +11,11 @@
 
 			<button class="button is-primary">Login</button>
 		</form>
-		<p class="has-text-centered">
-You don't have an account yet? <router-link v-if="!$root.user" to="/signup">
+		<p class="has-text-centered">You don't have an account yet? 
+			<router-link v-if="!$root.user" to="/signup">
 				Signup
-			</router-link></p>
+			</router-link>
+		</p>
 	</div>
 	<!-- <section>
 		<button class="button is-primary is-medium"

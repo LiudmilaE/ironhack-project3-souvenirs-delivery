@@ -114,8 +114,8 @@ export default {
 
 <style>
 @media screen and (min-width: 769px) {
-.trip, .order {
-		max-width: 50%;
+.order {
+		max-width: 80%;
 	}
 }
 #app {

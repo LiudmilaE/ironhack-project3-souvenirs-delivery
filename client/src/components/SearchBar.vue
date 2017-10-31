@@ -4,7 +4,7 @@
 			<b-field>
 				<b-input placeholder="Search by country..."
 						type="search"
-						icon="search" expanded v-model="query" name="query" autofocus>
+						icon="search" expanded v-model="query" name="query" autofocus v-focus>
 				</b-input>
 				<p class="control">
 					<router-link :to=" query ? '/trips?from='+query : '/trips' "><button class="button is-primary" id="search-btn">Search</button></router-link>

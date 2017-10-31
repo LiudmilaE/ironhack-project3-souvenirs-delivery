@@ -1,29 +1,42 @@
 <template>
-	<div>
-		<h3>Edit your account</h3>
-		<pre>{{ $root.user }}</pre>
-		Your avatar
-		<img :src="imgUrl" v-if="imgUrl">
-		<form @submit.prevent="uploadPicture">
-			<input type="file" name="picture" @change="picture = $event.target.files[0]">
+	<div class="container has-text-centered">
+		<div class="notification">
+			<h3 class="title">Edit your account</h3>
+			<pre>{{ user }}</pre>
+			<section>
+			<h4 class="subtitle">Your avatar</h4>
+			<figure class="image is-128x128">
+				<img v-if="user.image" :src="user.image" alt="profile photo">
+				<img v-else :src="imgUrl" v-if="imgUrl" width='100' height='150'>
+			</figure>
 			<br>
-			<button>Send</button>
-		</form>
-		<button @click.prevent="saveChanges">Update profile</button>
+				<form @submit.prevent="uploadPicture">
+					<input type="file" name="picture" @change="picture = $event.target.files[0]">
+					<br>
+					<button>Send</button>
+				</form>
+			</section>
+			<button @click.prevent="saveChanges">Update profile</button>
+		</div>
 	</div>
 </template>
 
 <script>
-	import { uploadPicture } from '@/api/auth'
-	import { updateUser } from '@/api/auth'
+	import { uploadPicture, updateUser, showUser } from '@/api/auth'
 
 export default {
 	data () {
 		return {
 			error: null,
 			picture: '',
-			imgUrl: ''
+			imgUrl: '',
+			user: null
 		}
+	},
+	created() {
+		showUser(this.$root.user._id).then(user => {
+					this.user = user;
+				});
 	},
 	methods: {
 		uploadPicture () {

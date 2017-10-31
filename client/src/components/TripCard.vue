@@ -20,8 +20,9 @@
 					</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
-				<p>Delivery price {{ trip.deliveryPrice }}</p>
+				<p>Delivery price {{ trip.deliveryPrice }} USD</p>
 				<time>{{ trip.tripDate | moment("dddd, MMMM Do YYYY") }}</time>
+				<hr>
 				<div v-if="orders.length>0"> 
 					<order-card :order="tripOrder" v-for="tripOrder in orders" :key="order.id"></order-card>
 				</div>
