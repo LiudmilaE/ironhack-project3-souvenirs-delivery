@@ -37,6 +37,9 @@ const orderSchema = new Schema({
 		type: String,
 		required: true
 	},
+	pickupDate: { 
+		type: Date, 
+	},
 	//image: String,
 	// country: { 
 	// 	type: String,

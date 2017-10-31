@@ -45,9 +45,12 @@
 		},
 		created() {
 			//show user's trips
+			let today = new Date();
 			showTrips().then(trips => { 
 				let id = this.$root.user._id
-				this.trips = trips.filter(trip => trip.travelerId === id);
+				this.trips = trips.filter(trip => {
+					let date = new Date(trip.tripDate);
+					return date > today && trip.travelerId === id});
 			 });
 			showOrders().then(orders => { 
 				let id = this.$root.user._id

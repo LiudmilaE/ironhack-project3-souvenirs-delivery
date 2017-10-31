@@ -6,7 +6,7 @@ const Order = require('../models/order');
 
 //order endpoints
 router.get('/', (req,res,next) => {
-	Order.find({}, '_id clientId tripId travelerId status souvenirTitle description')
+	Order.find({}, '_id clientId tripId travelerId status souvenirTitle description pickupDate')
 	.then(orders => {
 		res.json(orders);
 	})
@@ -22,14 +22,15 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next) => {
-	const { travelerId, tripId, souvenirTitle, description } = req.body;
+	const { travelerId, tripId, souvenirTitle, description, pickupDate } = req.body;
 	const clientId = req.user._id;
 	const order = new Order({
 		clientId,
 		travelerId, 
 		tripId,
 		souvenirTitle,
-		description 
+		description,
+		pickupDate, 
 	});
 
 	order.save()

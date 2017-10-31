@@ -13,12 +13,15 @@
 						required>
 					</b-input>
 				</b-field>
+				<b-field label="Pickup Date">
+					<b-input type="date" v-model="pickupDate" required maxlength="30"></b-input>
+				</b-field>
 				<b-field label="Description">
 					<b-input
-							type="textarea"
-							v-model="description"
-							placeholder="Description of the souvenir"
-							required>
+						type="textarea"
+						v-model="description"
+						placeholder="Description of the souvenir"
+						required>
 					</b-input>
 				</b-field>
 			</section>
@@ -38,6 +41,7 @@
 			return {
 				souvenirTitle: '',
 				description: '',
+				pickupDate: '',
 			}
 		},
 		props: ['trip'],
@@ -48,6 +52,7 @@
 					tripId: this.trip._id,
 					souvenirTitle: this.souvenirTitle,
 					description: this.description,
+					pickupDate: this.pickupDate,
 				};
 				addOrder(orderInfo).then(order => {
 					console.log("Order request is added!");
