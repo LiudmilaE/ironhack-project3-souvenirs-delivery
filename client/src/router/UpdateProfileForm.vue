@@ -14,12 +14,12 @@
 	         <figure class="image is-128x128 avatar-update">
 							<img v-if="user.image" :src="user.image" alt="profile photo">
 							<img v-else :src="imgUrl" v-if="imgUrl" width='100' height='150'>
+							<img v-if="!user.image" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
 						</figure>
 						<hr>
 						<form @submit.prevent="uploadPicture">
 						<input type="file" name="picture" @change="picture = $event.target.files[0]">
-						<br>
-						<button>Send</button>
+						<button>Save avatar</button>
 					</form>
 	       	</article>
 
@@ -28,7 +28,7 @@
 				</section>
 
 			<hr>
-			<button @click.prevent="saveChanges">Update profile</button>
+			<button @click.prevent="saveChanges" class="button is-primary is-large is-outlined">Update profile</button>
 		</div>
 	</div>
 </template>

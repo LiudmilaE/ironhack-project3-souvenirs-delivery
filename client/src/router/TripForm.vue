@@ -24,8 +24,12 @@
 				</b-select>
 			</b-field>
 
-			<b-field label="Trip Date">
+			<b-field label="Trip Start Date">
 				<b-input type="date" v-model="tripDate" required maxlength="30"></b-input>
+			</b-field>
+			
+			<b-field label="Trip End Date">
+				<b-input type="date" v-model="endTripDate" required maxlength="30"></b-input>
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
@@ -50,6 +54,7 @@
 					"France"
 				],
 				tripDate: '',
+				endTripDate: '',
 				deliveryPrice: '',
 				error: null
 			}
@@ -61,6 +66,7 @@
 					from: this.from,
 					to: this.to,
 					tripDate: this.tripDate,
+					endTripDate: this.endTripDate,
 					deliveryPrice: this.deliveryPrice,
 				})
 				.then(() => {

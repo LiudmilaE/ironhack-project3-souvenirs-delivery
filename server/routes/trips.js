@@ -11,7 +11,7 @@ router.get('/', (req,res,next) => {
 	if (attribute) { 
 		param = { from: attribute }
 	 }
-	Trip.find(param, '_id from to tripDate travelerId deliveryPrice acceptOrders')
+	Trip.find(param, '_id from to tripDate endTripDate travelerId deliveryPrice acceptOrders')
 	.then(trips => {
 		res.json(trips);
 	})
@@ -19,12 +19,13 @@ router.get('/', (req,res,next) => {
 });
 
 router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next) => {
-	const { from, to, tripDate, deliveryPrice} = req.body;
+	const { from, to, tripDate, endTripDate, deliveryPrice} = req.body;
 	const travelerId = req.user._id;
 	const trip = new Trip({
 		from, 
 		to, 
-		tripDate, 
+		tripDate,
+		endTripDate, 
 		travelerId, 
 		deliveryPrice
 	});

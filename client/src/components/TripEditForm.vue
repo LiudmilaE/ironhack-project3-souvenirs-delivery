@@ -8,12 +8,16 @@
 				<b-input type="date" v-model="tripDate" required maxlength="30" v-focus></b-input>
 			</b-field>
 
+			<b-field label="Trip End Date">
+				<b-input type="date" v-model="endTripDate" required maxlength="30"></b-input>
+			</b-field>
+
 			<b-field label="Still has space to accept orders?">
 				<div class="field">
-            <b-checkbox v-model="acceptOrders">
-                {{ acceptOrders ? "Yes" : "No"}}
-            </b-checkbox>
-        </div>
+								<b-checkbox v-model="acceptOrders">
+										{{ acceptOrders ? "Yes" : "No"}}
+								</b-checkbox>
+						</div>
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
@@ -32,6 +36,7 @@
 		data () {
 			return {
 				tripDate: '',
+				endTripDate: '',
 				deliveryPrice: '',
 				acceptOrders: true,
 				error: null
@@ -44,6 +49,7 @@
 				let data = {
 					acceptOrders: this.acceptOrders,
 					tripDate: this.tripDate,
+					endTripDate: this.endTripDate,
 					deliveryPrice: this.deliveryPrice,
 				};
 				updateTrip(this.trip._id, data)

@@ -24,6 +24,10 @@ const tripSchema = new Schema({
 		type: Date, 
 		required: true 
 	},
+	endTripDate: { 
+		type: Date, 
+		required: true 
+	},
 	travelerId: { 
 		type: Schema.Types.ObjectId,
 		required: true,
