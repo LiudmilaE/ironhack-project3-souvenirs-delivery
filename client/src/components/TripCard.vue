@@ -9,26 +9,24 @@
 		<div class="card-content">
 			<div class="content">
 				<p v-if ="user && trip.travelerId !== user._id">
-					<button class="button is-info is-medium"
-									@click="showUserDetails(trip.travelerId)">
-									<i class="fa fa-user" aria-hidden="true"></i>
-									View traveler details
-							</button>
+					<button class="button is-info is-medium" @click="showUserDetails(trip.travelerId)">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						View traveler details
+					</button>
 
-							<b-modal :active.sync="isModalActive" has-modal-card>
-									<user-card :user="traveler"></user-card>
-							</b-modal>
-					</p>
-					<p v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
-						<button class="button is-primary is-medium"
-								@click="isComponentModalActive = true">
-								Add Order
-						</button>
+					<b-modal :active.sync="isModalActive" has-modal-card>
+						<user-card :user="traveler"></user-card>
+					</b-modal>
+				</p>
+				<p v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
+					<button class="button is-primary is-medium" @click="isComponentModalActive = true">
+						Add Order
+					</button>
 
-						<b-modal :active.sync="isComponentModalActive" has-modal-card>
-								<order-form :trip="trip"></order-form>
-						</b-modal>
-					</p>
+					<b-modal :active.sync="isComponentModalActive" has-modal-card>
+						<order-form :trip="trip"></order-form>
+					</b-modal>
+				</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
 				<p v-else>Stoped accept orders</p>
 				<p>Delivery price {{ trip.deliveryPrice }}<i class="fa fa-usd" aria-hidden="true"></i></p>

@@ -11,12 +11,14 @@
 			<div class="content">
 				<p>{{ order.description }}</p>
 				<div v-if="user && order.clientId === user._id && order.status === 'accepted'">
+					<p>Your request is accepted, to fix or change the pick up details, please contact traveler!</p>
 					<button class="button is-info is-small" @click="contactShow=!contactShow">
 						<i class="fa fa-user" aria-hidden="true"></i>
 						{{ contactShow ? "Hide contact details" : "Show contact details"}}
 					</button>
 					<p v-if="contactShow">{{ email }}</p>
 				</div>
+				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">We are sorry, but your request was rejected. Please, delete your order and try again with more details</p>
 			</div>
 			
 			<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
