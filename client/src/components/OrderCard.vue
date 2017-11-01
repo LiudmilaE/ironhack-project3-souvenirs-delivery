@@ -10,13 +10,14 @@
 		<div class="card-content">
 			<div class="content">
 				<p>{{ order.description }}</p>
-				<div v-if="user && order.clientId === user._id && order.status === 'accepted'">
-					<p>Your request is accepted, to fix or change the pick up details, please contact traveler!</p>
+				<div v-if="user && (order.clientId === user._id || order.travelerId === user._id) && order.status === 'accepted'">
+					<p v-if="order.clientId === user._id">Your request is accepted, to fix or change the pick up details, please contact traveler!</p>
+					<p v-if="order.travelerId === user._id">To fix or change the pick up details, please contact client</p>
 					<button class="button is-info is-small" @click="contactShow=!contactShow">
 						<i class="fa fa-user" aria-hidden="true"></i>
 						{{ contactShow ? "Hide contact details" : "Show contact details"}}
 					</button>
-					<p v-if="contactShow">{{ email }}</p>
+					<p v-if="contactShow">{{ order.clientId === user._id ? emailTraveler : emailClient }}</p>
 				</div>
 				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">We are sorry, but your request was rejected. Please, delete your order and try again with more details</p>
 			</div>
@@ -44,7 +45,8 @@
 		data () {
 			return {
 				user: this.$root.user || null,
-				email: '',
+				emailTraveler: '',
+				emailClient: '',
 				contactShow: false,
 			}
 		},
@@ -52,8 +54,11 @@
 		created () {
 		
 			showUser(this.order.clientId).then(user => {
-				this.email = user.email;
+				this.emailClient = user.email;
 			});
+			showUser(this.order.travelerId).then(user => {
+				this.emailTraveler = user.email;
+			})
 		
 		},
 		methods: {
