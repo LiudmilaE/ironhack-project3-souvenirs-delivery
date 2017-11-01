@@ -2,27 +2,23 @@
 	<div class="container">
 		<div class="notification columns">
 			<div class="column">
-				
 				<user-card :user="user"></user-card>
 				<hr>
-				<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
-				<router-link to="/profile/update"><span class="button is-primary is-large is-outlined"><i class="fa fa-cog" aria-hidden="true"></i>Edit your account </span></router-link>
+				<router-link to="/trips/new"><span class="button is-primary is-medium is-outlined">Register your new trip</span></router-link>
+				<router-link to="/profile/update"><span class="button is-primary is-medium is-outlined"><i class="fa fa-cog" aria-hidden="true"></i>Edit your account </span></router-link>
 				<hr>
-				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders</h4>
-				<div v-if="orders.length>0" class="columns">
-						<order-card v-for="order in orders" :key="order.id" :order="order" class="column"></order-card>
+				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders, that you should pick up</h4>
+				<div v-if="orders.length>0">
+					<order-card v-for="order in orders" :key="order.id" :order="order" class="column"></order-card>
 				</div>
-			<!-- <router-link to="#"><span class="button is-primary is-large is-outlined">Make an oder</span></router-link> -->
 			</div>
-
-			
+			<hr>
 			<div class="column">
-				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your trips</h4>
+				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your next trips</h4>
 				<div v-if="trips.length>0">
 						<trip-card v-for="trip in trips" :key="trip.id" :trip="trip" class="column"></trip-card>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </template>
@@ -77,7 +73,7 @@
 	}
 	.box {
 		margin-bottom: 1.5rem;
-		margin-left: 5px;
+		margin-left: 3px;
 	}
 	i {
 		margin-right: 10px;

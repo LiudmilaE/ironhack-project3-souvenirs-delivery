@@ -2,28 +2,27 @@
 	<div class="box order" :order="order">
 		<header class="card-header">
 			<p class="card-header-title">
-				<i class="fa fa-hourglass-o" aria-hidden="true"></i>
-				Order of {{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
-				 / status - {{ order.status }}</em>
+				<i class="fa fa-hourglass-o" aria-hidden="true" v-if="order.status === 'pending'"></i>
+				<i class="fa fa-check-square-o" aria-hidden="true" v-if="order.status === 'accepted'"></i>
+				{{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
+				 / {{ order.status }}</em>
 			</p>
 		</header>
 		<div class="card-content">
 			<div class="content">
 				<p>{{ order.description }}</p>
 				<div v-if="user && (order.clientId === user._id || order.travelerId === user._id) && order.status === 'accepted'">
-					<p v-if="order.clientId === user._id">To fix or change the pick up details, please contact traveler!</p>
-					<p v-if="order.travelerId === user._id">To fix or change the pick up details, please contact client</p>
-					<button class="button is-info is-small" @click="contactShow=!contactShow">
-						<i class="fa fa-user" aria-hidden="true"></i> 
-						{{ contactShow ? " Hide" : " Show "}}
-					</button>
-					<p v-if="contactShow">{{ order.clientId === user._id ? emailTraveler : emailClient }}</p>
+					<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
+					<hr>
+					<p v-if="order.travelerId === user._id || order.clientId === user._id">Want to change the pick up details?</p>
+					<span class="button is-info" @click="contactShow=!contactShow">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+						{{ contactShow ? " Hide " : " Show " }}
+					</span>
+					<em v-if="contactShow">{{ order.clientId === user._id ? emailTraveler : emailClient }}</em>
 				</div>
-				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">We are sorry, but your request was rejected. Please, delete your order and try again with more details</p>
+				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">Your request was rejected. Please, delete your order and try again</p>
 			</div>
-			
-			<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
-			<!-- <trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form> -->
 		</div>
 		<footer class="card-footer" v-if="user && order.clientId === user._id && order.status !== 'accepted'">
 			<!--TODO

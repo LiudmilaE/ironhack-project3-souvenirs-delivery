@@ -3,12 +3,13 @@
 		<section class="hero is-info is-medium has-text-centered">
 			<div class="hero-body" id="img-about">
 				<div class="container">
-					<h2 class="title is-2">How does it work?</h2>
+					<h2 class="title is-2">How does it work ?</h2>
 				</div>
 			</div>
 		</section>
 
 		<section class="container">
+
 			<div class="columns is-vcentered">
 				<div class="column is-6">
 					<p class="title is-3">Going to travel?</p>

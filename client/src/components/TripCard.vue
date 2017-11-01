@@ -5,21 +5,21 @@
 				<span class="emoji">&#x2708</span>
 				Trip from {{ trip.from }} to {{ trip.to }}.
 			</p>
-		</header>
-		<div class="card-content">
-			<div class="content">
-				<p v-if ="user && trip.travelerId !== user._id">
-					<button class="button is-info is-medium" @click="showUserDetails(trip.travelerId)">
-						<i class="fa fa-user" aria-hidden="true"></i>
+			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
+					<span @click="showUserDetails(trip.travelerId)">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 						Traveler details
-					</button>
+					</span>
 
 					<b-modal :active.sync="isModalActive" has-modal-card>
 						<user-card :user="traveler"></user-card>
 					</b-modal>
-				</p>
+				</span>
+		</header>
+		<div class="card-content">
+			<div class="content">
 				<p v-if="user && trip.acceptOrders && trip.travelerId !== user._id">
-					<button class="button is-primary is-medium" @click="isComponentModalActive = true">
+					<button class="button is-primary" @click="isComponentModalActive = true">
 						Add Order
 					</button>
 
@@ -35,6 +35,7 @@
 				<time>Ends - {{ trip.endTripDate | moment("dddd, MMMM Do YYYY") }}</time>
 				
 				<div v-if="orders.length>0"> 
+					<p>Registered <b>{{orders.length}}</b> order(s)</p>
 					<hr>
 					<order-card :order="tripOrder" v-for="tripOrder in orders" :key="order.id"></order-card>
 				</div>

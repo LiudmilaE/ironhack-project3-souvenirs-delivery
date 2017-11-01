@@ -102,4 +102,5 @@ export default {
 	.avatar-update {
 		    justify-content: center;
 	}
+	
 </style>

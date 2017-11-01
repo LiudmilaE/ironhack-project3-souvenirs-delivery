@@ -26,10 +26,10 @@
 							Signup
 					</router-link>
 					<router-link to="/about" class="navbar-item toggle-item">
-							How does it work?
+							How does it work ?
 					</router-link>
 					<router-link v-if="$root.user" to="/profile" class="navbar-item toggle-item">
-							<i class="fa fa-user-o" aria-hidden="true"></i>My Profile
+							<i class="fa fa-user-o" aria-hidden="true"></i> My Profile
 					</router-link>
 					<a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
 							Logout
@@ -38,7 +38,7 @@
 			</div>
 		</nav>
 
-		<div>
+		<div class="bg-img">
 			<router-view/>
 		</div>
 
@@ -145,4 +145,19 @@ export default {
 .navbar {
 	font-size: 1.2rem;
 }
+
+.notification {
+	-webkit-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+		-moz-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+			box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+			border-radius: 20px;
+
+}
+
+.card, .box {
+		-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.5) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	}
+
 </style>
