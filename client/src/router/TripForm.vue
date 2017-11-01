@@ -51,7 +51,8 @@
 				to: '',
 				options: [
 					'Ukraine',
-					"France"
+					"France",
+					"Canada"
 				],
 				tripDate: '',
 				endTripDate: '',

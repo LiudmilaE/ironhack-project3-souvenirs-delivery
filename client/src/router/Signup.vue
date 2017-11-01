@@ -62,7 +62,8 @@
 				country: '',
 				options: [
 					'Ukraine',
-					"France"
+					"France",
+					"Canada"
 				]
 			}
 		},

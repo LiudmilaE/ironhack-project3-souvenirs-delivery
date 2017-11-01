@@ -2,7 +2,7 @@
 	<div class="box order" :order="order">
 		<header class="card-header">
 			<p class="card-header-title">
-				<span class="emoji">&#x23F3</span>
+				<i class="fa fa-hourglass-o" aria-hidden="true"></i>
 				Order of {{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
 				 / status - {{ order.status }}</em>
 			</p>
@@ -11,11 +11,11 @@
 			<div class="content">
 				<p>{{ order.description }}</p>
 				<div v-if="user && (order.clientId === user._id || order.travelerId === user._id) && order.status === 'accepted'">
-					<p v-if="order.clientId === user._id">Your request is accepted, to fix or change the pick up details, please contact traveler!</p>
+					<p v-if="order.clientId === user._id">To fix or change the pick up details, please contact traveler!</p>
 					<p v-if="order.travelerId === user._id">To fix or change the pick up details, please contact client</p>
 					<button class="button is-info is-small" @click="contactShow=!contactShow">
-						<i class="fa fa-user" aria-hidden="true"></i>
-						{{ contactShow ? "Hide contact details" : "Show contact details"}}
+						<i class="fa fa-user" aria-hidden="true"></i> 
+						{{ contactShow ? " Hide" : " Show "}}
 					</button>
 					<p v-if="contactShow">{{ order.clientId === user._id ? emailTraveler : emailClient }}</p>
 				</div>
@@ -25,10 +25,10 @@
 			<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
 			<!-- <trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form> -->
 		</div>
-		<footer class="card-footer" v-if="user && order.clientId === user._id">
+		<footer class="card-footer" v-if="user && order.clientId === user._id && order.status !== 'accepted'">
 			<!--TODO
 			 <a href="#" @click.prevent="deleteOrder" class="card-footer-item" v-if="order.status==='accepted'">Done</a> -->
-			<a href="#" @click.prevent="deleteOrder" class="card-footer-item"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
+			<a href="#" @click.prevent="deleteOrder" class="card-footer-item"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">
 			<a href="#" @click.prevent="acceptOrder" class="card-footer-item"><i class="fa fa-handshake-o" aria-hidden="true"></i>Accept request</a>

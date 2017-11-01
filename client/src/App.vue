@@ -29,7 +29,7 @@
 							How does it work?
 					</router-link>
 					<router-link v-if="$root.user" to="/profile" class="navbar-item toggle-item">
-							My Profile
+							<i class="fa fa-user-o" aria-hidden="true"></i>My Profile
 					</router-link>
 					<a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
 							Logout
@@ -115,7 +115,7 @@ export default {
 <style>
 @media screen and (min-width: 769px) {
 .order {
-		max-width: 80%;
+		max-width: 95%;
 	}
 }
 #app {
@@ -137,7 +137,7 @@ export default {
 }
 .container {
 	padding-top: 40px;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 }
 .fa-2 {
 	font-size: 1.5rem;

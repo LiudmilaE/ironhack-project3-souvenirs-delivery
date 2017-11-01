@@ -2,13 +2,13 @@
 	<div class="container">
 		<div class="notification columns">
 			<div class="column">
-				<h2 class="title" v-if="$root.user">Welcome to your profile page!</h2>
+				
 				<user-card :user="user"></user-card>
 				<hr>
 				<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
 				<router-link to="/profile/update"><span class="button is-primary is-large is-outlined"><i class="fa fa-cog" aria-hidden="true"></i>Edit your account </span></router-link>
 				<hr>
-				<h3 class="subtitle" v-if="orders.length>0">Your orders</h3>
+				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders</h4>
 				<div v-if="orders.length>0" class="columns">
 						<order-card v-for="order in orders" :key="order.id" :order="order" class="column"></order-card>
 				</div>
@@ -17,7 +17,7 @@
 
 			
 			<div class="column">
-				<h3 class="subtitle" v-if="trips.length>0">Your trips</h3>
+				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your trips</h4>
 				<div v-if="trips.length>0">
 						<trip-card v-for="trip in trips" :key="trip.id" :trip="trip" class="column"></trip-card>
 				</div>
@@ -77,7 +77,7 @@
 	}
 	.box {
 		margin-bottom: 1.5rem;
-		margin-left: 1rem;
+		margin-left: 5px;
 	}
 	i {
 		margin-right: 10px;

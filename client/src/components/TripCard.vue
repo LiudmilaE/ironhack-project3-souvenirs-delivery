@@ -11,7 +11,7 @@
 				<p v-if ="user && trip.travelerId !== user._id">
 					<button class="button is-info is-medium" @click="showUserDetails(trip.travelerId)">
 						<i class="fa fa-user" aria-hidden="true"></i>
-						View traveler details
+						Traveler details
 					</button>
 
 					<b-modal :active.sync="isModalActive" has-modal-card>

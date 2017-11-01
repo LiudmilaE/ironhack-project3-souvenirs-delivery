@@ -58,7 +58,8 @@ export default {
 			country: '',
 				options: [
 					'Ukraine',
-					"France"
+					"France",
+					"Canada"
 				]
 		}
 	},
