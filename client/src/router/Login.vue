@@ -19,39 +19,19 @@
 			</router-link>
 		</p>
 	</div>
-	<!-- <section>
-		<button class="button is-primary is-medium"
-						@click="isComponentModalActive = true">
-						Login
-		</button>
-
-		<b-modal :active.sync="isComponentModalActive" has-modal-card>
-			<login-form v-bind="formProps"></login-form>
-		</b-modal>
-	</section> -->
 </template>
 
 <script>
 
 	import { login } from '@/api/auth';
-	//import LoginForm from '@/components/LoginForm'
 
 	export default {
 		data () {
 			return {
 				username: '',
 				password: '',
-				// isComponentModalActive: false,
-				// formProps: {
-				// 	username: 'coco',
-				// 	password: ''
-				// }
 			}
 		},
-		// components: {
-		// 	LoginForm
-		// },
-		//props: ['email', 'password']
 		methods: {
 			login () {
 				login(this.username, this.password, this.$root)
