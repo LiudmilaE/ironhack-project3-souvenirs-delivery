@@ -51,6 +51,7 @@
 
 <script>
 	import { uploadPicture, updateUser, showUser } from '@/api/auth'
+	import { listCountries } from '@/api/trips'
 
 export default {
 	data () {
@@ -60,11 +61,7 @@ export default {
 			imgUrl: '',
 			user: showUser(this.$root.user._id) || this.$root.user || null,
 			country: '',
-				options: [
-					'Ukraine',
-					"France",
-					"Canada"
-				]
+			options: listCountries(),
 		}
 	},
 	created() {

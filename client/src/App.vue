@@ -189,5 +189,11 @@ export default {
 	i.primary {
 		color: #7957d5;
 	}
+	/*button.datepicker__clear-button, .datepicker__close-button {
+		color: #7957d5;
+	}
+	.datepicker__dummy-wrapper--is-active {
+		
+	}*/
 
 </style>

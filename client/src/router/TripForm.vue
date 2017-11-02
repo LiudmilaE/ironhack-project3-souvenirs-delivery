@@ -8,7 +8,7 @@
 				<b-select
 					v-model="from"
 					icon="globe"
-					icon-pack="fa" v-focus>
+					icon-pack="fa" expanded v-focus>
 					<option disabled value="">Please select one</option>
 					<option v-for="option in options" :value="option">{{option}}</option>
 				</b-select>
@@ -18,17 +18,19 @@
 				<b-select
 					v-model="to"
 					icon="globe"
-					icon-pack="fa">
+					icon-pack="fa" expanded>
 					<option disabled value="">Please select one</option>
 					<option v-for="option in options" :value="option">{{option}}</option>
 				</b-select>
 			</b-field>
 
+			<b-field label="Select trip dates">
 			<HotelDatePicker
 				v-on:checkInChanged="getStartDate"
 				v-on:checkOutChanged="getEndDate"
 				:i18n="ptBr"
 				/></HotelDatePicker>
+				</b-field>
 
 
 			<b-field label="Delivery Price in USD">
@@ -43,6 +45,7 @@
 <script>
 	import { addTrip } from '@/api/trips'
 	import HotelDatePicker from 'vue-hotel-datepicker'
+	import { listCountries } from '@/api/trips'
 
 	export default {
 		data () {
@@ -57,11 +60,7 @@
 		  		'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     		},
 				to: '',
-				options: [
-					'Ukraine',
-					"France",
-					"Canada"
-				],
+				options: listCountries(),
 				tripDate: '',
 				endTripDate: '',
 				deliveryPrice: '',

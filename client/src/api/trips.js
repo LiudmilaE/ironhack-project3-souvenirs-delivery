@@ -49,3 +49,10 @@ export function deleteTrip (id) {
 			console.log("Trip is deleted")
 		});
 }
+
+export function listCountries() {
+	const countriesDB = require('../../../server/data/countries');
+	return countriesDB.map(function(obj){
+		return obj.name
+	});
+}

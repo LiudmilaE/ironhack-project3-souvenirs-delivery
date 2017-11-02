@@ -49,6 +49,7 @@
 
 <script>
 	import { signup } from '@/api/auth'
+	import { listCountries } from '@/api/trips'
 
 	export default {
 		data () {
@@ -60,11 +61,7 @@
 				firstName: '',
 				lastName: '',
 				country: '',
-				options: [
-					'Ukraine',
-					"France",
-					"Canada"
-				]
+				options: listCountries(),
 			}
 		},
 		methods: {
