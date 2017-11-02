@@ -7,7 +7,7 @@
 			</p>
 			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
 				<span @click="showUserDetails(trip.travelerId)">
-					<i class="fa fa-address-card-o" aria-hidden="true"></i>
+					<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
 					Traveler details
 				</span>
 
@@ -39,7 +39,7 @@
 					<p>Registered <b>{{orders.length}}</b> order(s)</p>
 					<ul v-if="user">
 						<li v-for="tripOrder in orders" :key="order.id" v-if="tripOrder.travelerId === user._id">
-							<span @click="isOrderModalActive = true">{{tripOrder.souvenirTitle}} <i class="fa fa-info-circle" aria-hidden="true"></i></span>
+							<span @click="isOrderModalActive = true">{{tripOrder.souvenirTitle}} <i class="fa fa-info-circle info" aria-hidden="true"></i></span>
 							<b-modal :active.sync="isOrderModalActive" has-modal-card>
 								<order-card :order="tripOrder"></order-card>
 							</b-modal>
@@ -50,8 +50,8 @@
 			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
-			<a href="#" class="card-footer-item" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
+			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
 		</footer>
 	</div>
 </template>
@@ -109,8 +109,3 @@
 	}
 	
 </script>
-
-<style scoped>
-
-	
-</style>

@@ -113,51 +113,80 @@ export default {
 </script>
 
 <style>
-@media screen and (min-width: 769px) {
-.order {
-		max-width: 95%;
+	@media screen and (min-width: 769px) {
+	.order {
+			max-width: 95%;
+		}
 	}
-}
-#app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #2c3e50;
-	margin-top: 60px;
-}
-#vue-logo {
-	height: 15px;
-	width: 15px;
-}
-.emoji {
-	margin-right: 15px;
-}
-#app {
-	margin-top: 0;
-}
-.container {
-	padding-top: 40px;
-	padding-bottom: 30px;
-}
-.fa-2 {
-	font-size: 1.5rem;
-}
-.navbar {
-	font-size: 1.2rem;
-}
 
-.notification {
-	-webkit-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
-		-moz-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
-			box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
-			border-radius: 20px;
+	/*basic style*/
+	#app {
+		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #2c3e50;
+		margin-top: 60px;
+	}
+	#vue-logo {
+		height: 15px;
+		width: 15px;
+	}
+	.emoji {
+		margin-right: 15px;
+	}
+	#app {
+		margin-top: 0;
+	}
+	.container {
+		padding-top: 40px;
+		padding-bottom: 30px;
+	}
+	.fa-2 {
+		font-size: 1.5rem;
+	}
+	.navbar {
+		font-size: 1.2rem;
+	}
 
-}
+	.notification {
+		-webkit-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+			-moz-box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+				box-shadow: -1px -5px 100px -15px rgba(83,134,139,1);
+				border-radius: 20px;
 
-.card, .box {
-		-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.5) inset;
-            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	}
+
+	.card, .box {
+			-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.5) inset;
+	            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		}
+
+	.notification a:not(.button) {
+		text-decoration: none;
+		color: #7957d5;
+	}
+
+	.notification .card-footer-item.danger {
+		color: #ff3860;
+	}
+
+	.notification .card-footer-item.success {
+		color: #23d160;
+	}
+
+	.box {
+		margin-bottom: 1.5rem;
+		margin-left: 3px;
+	}
+	i {
+		margin-right: 10px;
+	}
+	i.info {
+		color: #209cee;
+	}
+	i.primary {
+		color: #7957d5;
 	}
 
 </style>

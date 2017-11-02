@@ -66,16 +66,3 @@
 	}
 </script>
 
-<style>
-	.notification a:not(.button) {
-	text-decoration: none;
-	color: #7957d5;
-	}
-	.box {
-		margin-bottom: 1.5rem;
-		margin-left: 3px;
-	}
-	i {
-		margin-right: 10px;
-	}
-</style>

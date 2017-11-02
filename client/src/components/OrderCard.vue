@@ -9,7 +9,7 @@
 			</p>
 			<span v-if ="user && order.travelerId !== user._id" class="card-header-icon">
 				<span @click="showUserDetails(order.travelerId)">
-					<i class="fa fa-address-card-o" aria-hidden="true"></i>
+					<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
 					Traveler details
 				</span>
 
@@ -34,11 +34,11 @@
 		<footer class="card-footer" v-if="user && order.clientId === user._id && order.status !== 'accepted'">
 			<!--TODO
 			 <a href="#" @click.prevent="deleteOrder" class="card-footer-item" v-if="order.status==='accepted'">Done</a> -->
-			<a href="#" @click.prevent="deleteOrder" class="card-footer-item"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
+			<a href="#" @click.prevent="deleteOrder" class="card-footer-item danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
 		</footer>
 		<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">
-			<a href="#" @click.prevent="acceptOrder" class="card-footer-item"><i class="fa fa-handshake-o" aria-hidden="true"></i>Accept request</a>
-			<a href="#" @click.prevent="rejectOrder" class="card-footer-item"><i class="fa fa-times" aria-hidden="true"></i>Reject request</a>
+			<a href="#" @click.prevent="acceptOrder" class="card-footer-item success"><i class="fa fa-handshake-o" aria-hidden="true"></i>Accept request</a>
+			<a href="#" @click.prevent="rejectOrder" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Reject request</a>
 		</footer>
 	</div>
 </template>
