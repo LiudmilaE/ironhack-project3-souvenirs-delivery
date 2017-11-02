@@ -7,7 +7,7 @@
 			</p>
 			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
 					<span @click="showUserDetails(trip.travelerId)">
-						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						<i class="fa fa-address-card-o" aria-hidden="true"></i>
 						Traveler details
 					</span>
 
@@ -35,9 +35,16 @@
 				<time>Ends - {{ trip.endTripDate | moment("dddd, MMMM Do YYYY") }}</time>
 				
 				<div v-if="orders.length>0"> 
-					<p>Registered <b>{{orders.length}}</b> order(s)</p>
 					<hr>
-					<order-card :order="tripOrder" v-for="tripOrder in orders" :key="order.id"></order-card>
+					<p>Registered <b>{{orders.length}}</b> order(s)</p>
+					<ul v-if="user">
+						<li v-for="tripOrder in orders" :key="order.id" v-if="tripOrder.travelerId === user._id">
+							<span @click="isOrderModalActive = true">{{tripOrder.souvenirTitle}} <i class="fa fa-info-circle" aria-hidden="true"></i></span>
+							<b-modal :active.sync="isOrderModalActive" has-modal-card>
+								<order-card :order="tripOrder"></order-card>
+							</b-modal>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<trip-edit-form v-if="showForm" :trip="trip"></trip-edit-form>
@@ -69,6 +76,7 @@
 				orders: [],
 				isModalActive: false,
 				traveler: null,
+				isOrderModalActive: false,
 			}
 		},
 		components: {

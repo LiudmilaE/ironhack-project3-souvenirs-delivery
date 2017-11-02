@@ -4,8 +4,8 @@
 			<h3 class="title is-2">Edit your account</h3>
 			<section class="tile is-anscestor">
 				<div class="tile is-parent avatar-update">
-	      	<article class="tile is-4 is-child box">
-	      		<p class="subtitle is-3">Current country</p>
+					<article class="tile is-4 is-child box">
+						<p class="subtitle is-3">Current country</p>
 						<b-field :label="'You live in ' + user.country +'? Change :'">
 							<b-select
 								v-model="country"
@@ -16,27 +16,28 @@
 							</b-select>
 						</b-field>
 					</article>
-	     	</div>
+				</div>
 			</section>
 
 			<hr>
 			
 			<section class="tile is-anscestor">
 				<div class="tile is-parent avatar-update">
-	      	<article class="tile is-4 is-child box">
-	        	<p class="subtitle is-3">Your avatar</p>
-	         	<figure class="image is-128x128">
+					<article class="tile is-4 is-child box">
+						<p class="subtitle is-3">Your avatar</p>
+						<figure class="image">
 							<img v-if="user.image" :src="user.image" alt="profile photo">
 							<img v-if="!user.image" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
 							<img :src="imgUrl" v-if="imgUrl" width='100' height='150'>
 						</figure>
 						<hr>
 						<form @submit.prevent="uploadPicture">
-							<input type="file" name="picture" @change="picture = $event.target.files[0]">
-							<button><i class="fa fa-upload" aria-hidden="true"></i>Save avatar</button>
+							<input id="file" class="inputfile" type="file" name="picture" @change="picture = $event.target.files[0]">
+							<label  class="button is-dark is-outlined"><i class="fa fa-upload" aria-hidden="true"></i> Choose photo...</label>
+							<button class="button is-success is-outlined">Save avatar</button>
 						</form>
-	       	</article>
-	     	</div>
+					</article>
+				</div>
 			</section>
 
 			<hr>
@@ -100,7 +101,30 @@ export default {
 
 <style scoped>
 	.avatar-update {
-		    justify-content: center;
+				justify-content: center;
 	}
+	.inputfile {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+	.inputfile + label {
+			color: white;
+			background-color: black;
+			display: inline-block;
+			border-radius: 5px;
+	}
+
+	.inputfile:focus + label,
+	.inputfile + label:hover {
+			background-color: red;
+	}
+	.inputfile + label {
+		cursor: pointer; /* "hand" cursor */
+	}
+
 	
 </style>

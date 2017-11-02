@@ -1,5 +1,5 @@
 <template>
-	<div class="box order" :order="order">
+	<div class="card order" :order="order">
 		<header class="card-header">
 			<p class="card-header-title">
 				<i class="fa fa-hourglass-o" aria-hidden="true" v-if="order.status === 'pending'"></i>
@@ -15,11 +15,8 @@
 					<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
 					<hr>
 					<p v-if="order.travelerId === user._id || order.clientId === user._id">Want to change the pick up details?</p>
-					<span class="button is-info" @click="contactShow=!contactShow">
-						<i class="fa fa-envelope-o" aria-hidden="true"></i>
-						{{ contactShow ? " Hide " : " Show " }}
-					</span>
-					<em v-if="contactShow">{{ order.clientId === user._id ? emailTraveler : emailClient }}</em>
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<em>{{ order.clientId === user._id ? emailTraveler : emailClient }}</em>
 				</div>
 				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">Your request was rejected. Please, delete your order and try again</p>
 			</div>
@@ -51,7 +48,6 @@
 		},
 		props: ['order'],
 		created () {
-		
 			showUser(this.order.clientId).then(user => {
 				this.emailClient = user.email;
 			});
@@ -96,6 +92,10 @@
 	}
 </script>
 
-<style scoped>
-
+<style skoped>
+	li {
+		cursor: pointer; /* "hand" cursor */
+	}
+	
 </style>
+
