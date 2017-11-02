@@ -6,15 +6,15 @@
 				Trip from {{ trip.from }} to {{ trip.to }}.
 			</p>
 			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
-					<span @click="showUserDetails(trip.travelerId)">
-						<i class="fa fa-address-card-o" aria-hidden="true"></i>
-						Traveler details
-					</span>
-
-					<b-modal :active.sync="isModalActive" has-modal-card>
-						<user-card :user="traveler"></user-card>
-					</b-modal>
+				<span @click="showUserDetails(trip.travelerId)">
+					<i class="fa fa-address-card-o" aria-hidden="true"></i>
+					Traveler details
 				</span>
+
+				<b-modal :active.sync="isModalActive" has-modal-card>
+					<user-card :user="traveler"></user-card>
+				</b-modal>
+			</span>
 		</header>
 		<div class="card-content">
 			<div class="content">

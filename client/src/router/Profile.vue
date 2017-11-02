@@ -4,7 +4,7 @@
 			<div class="column">
 				<user-card :user="user"></user-card>
 				<hr>
-				<router-link to="/trips/new"><span class="button is-primary is-medium is-outlined">Register your new trip</span></router-link>
+				<router-link to="/trips/new"><span class="button is-primary is-medium is-outlined"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Register your new trip</span></router-link>
 				<router-link to="/profile/update"><span class="button is-primary is-medium is-outlined"><i class="fa fa-cog" aria-hidden="true"></i>Edit your account </span></router-link>
 				<hr>
 				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders, that you should pick up</h4>

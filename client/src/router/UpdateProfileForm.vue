@@ -27,14 +27,15 @@
 						<p class="subtitle is-3">Your avatar</p>
 						<figure class="image">
 							<img v-if="user.image" :src="user.image" alt="profile photo">
-							<img v-if="!user.image" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+							<img v-if="!user.image && !picture" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
 							<img :src="imgUrl" v-if="imgUrl" width='100' height='150'>
 						</figure>
 						<hr>
 						<form @submit.prevent="uploadPicture">
 							<input id="file" class="inputfile" type="file" name="picture" @change="picture = $event.target.files[0]">
-							<label  class="button is-dark is-outlined"><i class="fa fa-upload" aria-hidden="true"></i> Choose photo...</label>
-							<button class="button is-success is-outlined">Save avatar</button>
+							<label for="file" class="button is-dark is-outlined" v-if="!picture && !imgUrl"><i class="fa fa-upload" aria-hidden="true"></i> Choose photo...</label>
+							<button class="button is-success is-outlined" v-if="picture && !imgUrl">Save avatar</button>
+							<!-- <span class="button is-danger is-outlined" v-if="picture && !imgUrl" @click="picture === ''">Cancel</span> -->
 						</form>
 					</article>
 				</div>
@@ -42,6 +43,8 @@
 
 			<hr>
 			<button @click.prevent="saveChanges" class="button is-primary is-large is-outlined">Update profile</button>
+			<router-link v-if="$root.user" to="/profile" class="button is-danger is-large is-outlined">Cancel</router-link>
+			 
 		</div>
 	</div>
 </template>
@@ -118,10 +121,7 @@ export default {
 			border-radius: 5px;
 	}
 
-	.inputfile:focus + label,
-	.inputfile + label:hover {
-			background-color: red;
-	}
+
 	.inputfile + label {
 		cursor: pointer; /* "hand" cursor */
 	}

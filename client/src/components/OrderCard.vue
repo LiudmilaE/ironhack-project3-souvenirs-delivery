@@ -7,6 +7,16 @@
 				{{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
 				 / {{ order.status }}</em>
 			</p>
+			<span v-if ="user && order.travelerId !== user._id" class="card-header-icon">
+				<span @click="showUserDetails(order.travelerId)">
+					<i class="fa fa-address-card-o" aria-hidden="true"></i>
+					Traveler details
+				</span>
+
+				<b-modal :active.sync="isModalActive" has-modal-card>
+					<user-card :user="traveler"></user-card>
+				</b-modal>
+			</span>
 		</header>
 		<div class="card-content">
 			<div class="content">
@@ -36,6 +46,7 @@
 <script>
 	import { deleteOrder, updateOrder } from "@/api/orders"
 	import { showUser } from '@/api/auth'
+	import UserCard from '@/components/UserCard'
 
 	export default {
 		data () {
@@ -44,6 +55,8 @@
 				emailTraveler: '',
 				emailClient: '',
 				contactShow: false,
+				isModalActive: false,
+				traveler: ''
 			}
 		},
 		props: ['order'],
@@ -55,6 +68,9 @@
 				this.emailTraveler = user.email;
 			})
 		
+		},
+		components: {
+			UserCard
 		},
 		methods: {
 			deleteOrder () {
@@ -87,6 +103,12 @@
 					this.error = err.response.data.error
 					console.error('Order edit err', err.response.data.error);
 				});
+			},
+			showUserDetails (id) {
+				showUser(id).then(user => {
+				this.traveler = user;
+				this.isModalActive = true;
+			});
 			}
 		}
 	}
