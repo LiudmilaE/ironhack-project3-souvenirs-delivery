@@ -62,38 +62,38 @@ const strategy = new Strategy({
 passport.use(strategy);
 
 //facebook strategy
-passport.use(
-	new FacebookStrategy(
-		{
-			clientID: process.env.FB_CLIENT_ID,
-			clientSecret: process.env.FB_CLIENT_SECRET,
-			callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
-			profileFields: ['id', 'displayName', 'email'],
-		},
-		(accessToken, refreshToken, profile, cb) => {
-			User.findOne({
-				facebookId: profile.id,
-			})
-				.then(user => {
-					if (user) {
-						return user;
-					} else {
-						const user = new User({
-							// we need a username
-							username: profile.email,
-							name: profile.displayName,
-							facebookId: profile.id,
-						});
-						return user.save();
-					}
-				})
-				.then(user => {
-					cb(null, user);
-				})
-				.catch(err => cb(err));
-		}
-	)
-);
+// passport.use(
+// 	new FacebookStrategy(
+// 		{
+// 			clientID: process.env.FB_CLIENT_ID,
+// 			clientSecret: process.env.FB_CLIENT_SECRET,
+// 			callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
+// 			profileFields: ['id', 'displayName', 'email'],
+// 		},
+// 		(accessToken, refreshToken, profile, cb) => {
+// 			User.findOne({
+// 				facebookId: profile.id,
+// 			})
+// 				.then(user => {
+// 					if (user) {
+// 						return user;
+// 					} else {
+// 						const user = new User({
+// 							// we need a username
+// 							username: profile.email,
+// 							name: profile.displayName,
+// 							facebookId: profile.id,
+// 						});
+// 						return user.save();
+// 					}
+// 				})
+// 				.then(user => {
+// 					cb(null, user);
+// 				})
+// 				.catch(err => cb(err));
+// 		}
+// 	)
+// );
 //end of facebook strategy
 	
 
