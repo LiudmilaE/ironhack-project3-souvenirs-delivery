@@ -53,8 +53,8 @@
 					deliveryPrice: this.deliveryPrice,
 				};
 				updateTrip(this.trip._id, data)
-				.then(() => {
-					this.$router.push('/');
+				.then(trip => {
+					this.$emit('updateTrip', trip)
 				}).catch(err => {
 					this.error = err.response.data.error
 					console.error('Trip edit err', err.response.data.error);
