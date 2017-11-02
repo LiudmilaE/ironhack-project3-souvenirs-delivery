@@ -3,7 +3,7 @@
 		<section class="hero is-info is-medium has-text-centered">
 			<div class="hero-body" id="img-about">
 				<div class="container">
-					<h2 class="title is-2">How does it work ?</h2>
+					<h2 class="title is-1">How does it work?</h2>
 				</div>
 			</div>
 		</section>
@@ -11,19 +11,8 @@
 		<section class="container">
 
 			<div class="columns is-vcentered">
-				<div class="column is-6">
-					<p class="title is-3">Going to travel?</p>
-					<ol>
-						<li>Search for a traveler</li>
-						<li>Book free space in traveler's baggage</li>
-						<li>Schedule the pick up</li>
-						<li>Pick up your order</li>
-						<li>Enjoy tasty food</li>
-					</ol>
-					<router-link to="/trips"><span class="button is-primary is-large is-outlined">Make an order</span></router-link>
-				</div>
-				<div class="column is-6">
-					<p class="title is-3">Looking for a special food?</p>
+				<div class="column is-7">
+					<p class="title is-2" id='travel'>Going to travel?</p>
 					<ol>
 						<li>Register your travel</li>
 						<li>Get baggage sharing requests</li>
@@ -32,6 +21,19 @@
 						<li>Earn money</li>
 					</ol>
 					<router-link to="/trips/new"><span class="button is-primary is-large is-outlined">Register your new trip</span></router-link>
+					
+				</div>
+				<hr>
+				<div class="column is-7">
+					<p class="title is-2">Looking for a special food?</p>
+					<ol>
+						<li>Search for a traveler</li>
+						<li>Book free space in traveler's baggage</li>
+						<li>Schedule the pick up</li>
+						<li>Pick up your order</li>
+						<li>Enjoy tasty food</li>
+					</ol>
+					<router-link to="/trips"><span class="button is-primary is-large is-outlined">Make an order</span></router-link>
 				</div>
 			</div>
 		</section>
@@ -44,10 +46,10 @@
 
 <style scoped>
 ol {
-	padding: 7%;
+	padding: 4% 7%;
 }
 .container {
-	padding: 7%;
+	padding: 4% 7%;
 }
 @media screen and (min-width: 769px) {
  #img-about {
@@ -57,9 +59,19 @@ ol {
 	background-position: left, right;
 	background-size: 50% 100%;
  }
+ li {
+ 	font-size: 1.2rem;
+ 	line-height: 1.5;
+ }
+  h2.title {
+ 	font-size: 4rem;
+ }
 }
 
 @media screen and (max-width: 768px) {
+	#travel {
+		margin-top: 15px;
+	}
 	 #img-about {
 		background-image:  url('../assets/flight-seat-travel-S.jpg');
 		background-repeat: no-repeat;
@@ -67,7 +79,13 @@ ol {
 	 }
  }
 
- h2 {
- 	text-shadow: 1px 1px 2px grey; 
+ h2.title {
+ 	text-shadow: 2px 3px 5px grey; 
+ 	text-shadow: 2px 3px 5px black;
+ }
+
+ li {
+ 	font-size: 1.5rem;
+ 	line-height: 2;
  }
 </style>

@@ -47,7 +47,7 @@
 				<div class="content has-text-centered">
 					<p> &copy;
 						<strong>Souvenirs Delivery</strong> by <a href="https://www.linkedin.com/in/liudmyla-iefremova/" target="_blank">Liudmyla Iefremova</a>. The source code is available on
-						<a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>. Powered by <a target="_blank" href="https://vuejs.org/" ><img src="./assets/logo.png" id="vue-logo" alt="Vue.js"></a>
+						<a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>. Powered by <a target="_blank" href="https://vuejs.org/" ><img src="./assets/logo.png" id="vue-logo" alt="Vue.js"></a>
 					</p>
 				</div>
 			</div>
@@ -116,6 +116,7 @@ export default {
 	@media screen and (min-width: 769px) {
 	.order {
 			max-width: 95%;
+			margin-bottom: 5px;
 		}
 	}
 
@@ -180,7 +181,7 @@ export default {
 		margin-left: 3px;
 	}
 	i {
-		margin-right: 10px;
+		margin-right: 7px;
 	}
 	i.info {
 		color: #209cee;

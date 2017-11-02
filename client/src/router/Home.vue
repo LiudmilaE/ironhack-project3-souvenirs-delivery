@@ -49,6 +49,12 @@
  	}
 }
 
+@media screen and (min-width: 768px) {
+	h1.title {
+	 	font-size: 4rem;
+	 }
+}
+
  #img-hero {
 	background-image: url('../assets/globe-map-world-XL.jpg');
 	background: cover;
@@ -59,7 +65,7 @@
  }
 
  h1, h2 {
- 	text-shadow: 1px 1px 2px grey; 
+ 	text-shadow: 2px 2px 3px grey; 
  }
 
 </style>

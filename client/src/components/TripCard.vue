@@ -8,7 +8,7 @@
 			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
 				<span @click="showUserDetails(trip.travelerId)">
 					<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
-					Traveler details
+					...
 				</span>
 
 				<b-modal :active.sync="isModalActive" has-modal-card>
@@ -89,8 +89,9 @@
 		methods: {
 			deleteTrip () {
 				// let id = this.id
-				deleteTrip(this.trip._id);
-				this.$router.push('/');
+				deleteTrip(this.trip._id).
+				then(data => this.$router.push('/profile'));
+				
 			},
 			showUserDetails (id) {
 				showUser(id).then(user => {
@@ -103,7 +104,7 @@
 			//show trip's orders
 			showOrders().then(orders => { 
 				let id = this.trip._id
-				this.orders = orders.filter(order => order.tripId === id);
+				this.orders = orders.filter(order => order.tripId === id && order.status !== "rejected");
 			 });
 		},
 	}

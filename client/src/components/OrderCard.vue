@@ -4,13 +4,14 @@
 			<p class="card-header-title">
 				<i class="fa fa-hourglass-o" aria-hidden="true" v-if="order.status === 'pending'"></i>
 				<i class="fa fa-check-square-o" aria-hidden="true" v-if="order.status === 'accepted'"></i>
+				<i class="fa fa-window-close-o" aria-hidden="true" v-if="order.status === 'rejected'"></i>
 				{{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
 				 / {{ order.status }}</em>
 			</p>
 			<span v-if ="user && order.travelerId !== user._id" class="card-header-icon">
 				<span @click="showUserDetails(order.travelerId)">
 					<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
-					Traveler details
+					...
 				</span>
 
 				<b-modal :active.sync="isModalActive" has-modal-card>
