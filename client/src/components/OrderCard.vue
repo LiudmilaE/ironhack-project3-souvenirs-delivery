@@ -76,8 +76,9 @@
 		methods: {
 			deleteOrder () {
 				// let id = this.id
-				deleteOrder(this.order._id);
-				this.$router.push('/');
+				deleteOrder(this.order._id)
+				.then(this.$emit('deleteOrder', true));
+				//this.$router.push('/');
 			},
 			acceptOrder () {
 				this.error = null;

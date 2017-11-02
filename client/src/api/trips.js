@@ -46,7 +46,7 @@ export function deleteTrip (id) {
 	return tripsApi
 		.delete('/'+id)
 		.then(response => {
-			console.log("Trip is deleted")
+			
 		});
 }
 

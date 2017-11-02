@@ -24,7 +24,7 @@
 					</button>
 
 					<b-modal :active.sync="isComponentModalActive" has-modal-card>
-						<order-form :trip="trip"></order-form>
+						<order-form :trip="trip" @addOrder="updateOrders()"></order-form>
 					</b-modal>
 				</p>
 				<p v-if="trip.acceptOrders">Still accept orders</p>
@@ -51,7 +51,7 @@
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
 			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
+			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id && orders.length === 0" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
 		</footer>
 	</div>
 </template>
@@ -90,7 +90,8 @@
 			deleteTrip () {
 				// let id = this.id
 				deleteTrip(this.trip._id).
-				then(data => this.$router.push('/profile'));
+				then(this.$emit('deleteTrip',true))
+				this.$router.push('/profile');
 				
 			},
 			showUserDetails (id) {
@@ -98,7 +99,14 @@
 				this.traveler = user;
 				this.isModalActive = true;
 			});
+			},
+			updateOrders() {
+				showOrders().then(orders => { 
+					let id = this.trip._id
+					this.orders = orders.filter(order => order.tripId === id && order.status !== "rejected");
+				 });
 			}
+
 		},
 		created() {
 			//show trip's orders

@@ -9,14 +9,14 @@
 				<hr>
 				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders, that you should pick up</h4>
 				<div v-if="orders.length>0">
-					<order-card v-for="order in orders" :key="order.id" :order="order" class="column"></order-card>
+					<order-card v-for="(order,index) in orders" :key="order.id" :order="order" class="column" @deleteOrder="deleteThisOrder(index)"></order-card>
 				</div>
 			</div>
 			<hr>
 			<div class="column">
 				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your next trips</h4>
 				<div v-if="trips.length>0">
-						<trip-card v-for="trip in trips" :key="trip.id" :trip="trip" class="column"></trip-card>
+						<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" @deleteTrip="deleteThisTrip(index)"></trip-card>
 				</div>
 			</div>
 		</div>
@@ -38,6 +38,14 @@
 				trips: [],
 				orders: [],
 			}
+		},
+		methods: {
+			deleteThisOrder: function(index) {
+            	this.orders.splice(index, 1);
+        	},
+        	deleteThisTrip: function(index) {
+        		this.trips.splice(index, 1);
+        	}
 		},
 		created() {
 			//show user's trips

@@ -55,9 +55,10 @@
 					pickupDate: this.pickupDate,
 				};
 				addOrder(orderInfo).then(order => {
-					console.log("Order request is added!");
+					this.$emit('addOrder', true);
+					this.$router.push('/profile')
 				});
-				this.$router.push('/');
+				
 				}
 			}
 	}
