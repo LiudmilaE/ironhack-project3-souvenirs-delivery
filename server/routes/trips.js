@@ -29,7 +29,7 @@ router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res,next)
 		travelerId, 
 		deliveryPrice
 	});
-	console.log(trip);
+	//console.log(trip);
 
 	trip.save()
 		.then(trip => {
@@ -54,7 +54,7 @@ router.patch('/:id', passport.authenticate('jwt', config.jwtSession), (req, res,
 		.catch(err => next(err));
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', passport.authenticate('jwt', config.jwtSession),  (req, res, next) => {
 	Trip.findByIdAndRemove(req.params.id)
 		.then(trip => {
 			if (!trip) {

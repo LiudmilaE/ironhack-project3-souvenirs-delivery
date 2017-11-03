@@ -51,8 +51,8 @@
 			return {
 				from: '',
 				ptBr: {
-					night: 'Night',
-					nights: 'Nights',
+					night: 'Day',
+					nights: 'Days',
 					'day-names': ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
 					'check-in': 'Start Date',
 					'check-out': 'End Date',
