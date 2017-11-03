@@ -3,7 +3,7 @@
 		<form>
 			<b-field>
 				<b-input placeholder="Search by country you want souvenir from..."
-						type="search"
+						type="search" icon-pack="fa"
 						icon="search" expanded v-model="query" name="query" autofocus v-focus>
 				</b-input>
 				<p class="control">

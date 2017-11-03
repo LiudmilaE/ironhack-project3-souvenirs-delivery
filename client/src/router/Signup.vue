@@ -35,6 +35,7 @@
 				<b-input
 						type="password"
 						required
+						minlength="4"
 						v-model="password"
 						password-reveal
 					>
