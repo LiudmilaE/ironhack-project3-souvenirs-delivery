@@ -41,6 +41,6 @@ const userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(timestamps);
-userSchema.plugin(uniqueValidator);
+userSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
 
 module.exports = mongoose.model('User', userSchema);
