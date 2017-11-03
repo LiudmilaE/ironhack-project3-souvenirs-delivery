@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<b-notification v-if="error" type="is-danger" has-icon>
-			{{ error.message }}
+			{{ error }}
 		</b-notification>
 		<form @submit.prevent="signup">
 			<b-field label="Username">

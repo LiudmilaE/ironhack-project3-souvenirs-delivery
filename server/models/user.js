@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
+var uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 const countriesDB = require('../data/countries');
+
 
 const COUNTRIES = countriesDB.map(function(obj){
 	return obj.name
@@ -39,5 +41,6 @@ const userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(timestamps);
+userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);

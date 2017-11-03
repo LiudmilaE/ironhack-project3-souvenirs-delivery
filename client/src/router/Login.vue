@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<b-notification v-if="error" type="is-danger" has-icon>
+			{{ error }}
+		</b-notification>
 		<!-- <a href="/auth/facebook">Login With Facebook</a> -->
 		<!-- <hr>OR -->
 		<form @submit.prevent="login">
@@ -30,6 +33,7 @@
 			return {
 				username: '',
 				password: '',
+				error: '',
 			}
 		},
 		methods: {
@@ -37,6 +41,9 @@
 				login(this.username, this.password, this.$root)
 				.then(data => {
 					this.$router.push('/')
+				}).catch(err => {
+					this.error = err.response.data.error
+					console.error('Login err', err.response.data.error);
 				});
 			},
 		},
