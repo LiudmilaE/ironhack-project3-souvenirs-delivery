@@ -2,7 +2,7 @@
 	<div class="container">
 		<section class="notification">
 		<b-notification v-if="error" type="is-danger" has-icon>
-			{{ error }}
+			{{ error === {} ? "Something went wrong..." : error }}
 		</b-notification>
 		<form @submit.prevent="signup">
 			<b-field label="Username">
@@ -79,8 +79,11 @@
 				}).then(() => {
 					this.$router.push('/login');
 				}).catch(err => {
+					if (err.response.data.error==={}){
+						this.error = "Email must be unique";
+					}
 					this.error = err.response.data.error
-					console.error('Signup err', err.response.data.error);
+					console.error('Signup err', err);
 				});
 			}
 		}
