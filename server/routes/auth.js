@@ -111,7 +111,7 @@ router.get('/users/:id', (req, res, next) => {
 
 //update avatar
 router.patch('/users/:id', passport.authenticate('jwt', config.jwtSession), (req, res, next) => {
-	User.findByIdAndUpdate(req.user._id, req.body, { new: true })
+	User.findByIdAndUpdate(req.user._id, req.body, { new: true }, { runValidators: true, context: 'query' })
 		.then(user => {
 			res.json(user);
 		})
