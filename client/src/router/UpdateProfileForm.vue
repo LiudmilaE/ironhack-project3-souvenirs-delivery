@@ -34,7 +34,7 @@
 						<form @submit.prevent="uploadPicture">
 							<input id="file" class="inputfile" type="file" name="picture" @change="picture = $event.target.files[0]">
 							<label for="file" class="button is-dark is-outlined" v-if="!picture && !imgUrl"><i class="fa fa-upload" aria-hidden="true"></i> Choose photo...</label>
-							<button class="button is-success is-outlined" v-if="picture && !imgUrl">Save avatar</button>
+							<button class="button is-success is-outlined" v-if="picture && !imgUrl"><i class="fa fa-upload" aria-hidden="true"></i>Preview</button>
 							<!-- <span class="button is-danger is-outlined" v-if="picture && !imgUrl" @click="picture === ''">Cancel</span> -->
 						</form>
 					</article>
