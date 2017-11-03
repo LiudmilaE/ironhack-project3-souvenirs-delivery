@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		<section class="notification">
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error }}
 		</b-notification>
@@ -44,6 +45,7 @@
 		</form>
 		<p class="has-text-centered">Already registered? <router-link v-if="!$root.user" to="/login">
 			Login</router-link></p>
+		</section>
 	</div>
 </template>
 
@@ -78,7 +80,7 @@
 					this.$router.push('/login');
 				}).catch(err => {
 					this.error = err.response.data.error
-					console.error('Signup err', err.response.data.error);
+					//console.error('Signup err', err.response.data.error);
 				});
 			}
 		}
@@ -86,6 +88,18 @@
 </script>
 
 <style scoped>
+@media screen and (min-width: 911px) {
+		.notification {
+			margin: 50px 25%;
+ 		}
+	}
+	@media screen and (min-width: 577px) {
+		.notification {
+			margin: 40px 15%;
+ 		}
+	}
+
+	577 911
 .container {
 	padding: 5%;
 }

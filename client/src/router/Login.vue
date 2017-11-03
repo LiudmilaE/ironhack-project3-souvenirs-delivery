@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		<section class="notification">
 		<b-notification v-if="error" type="is-danger" has-icon>
 			{{ error }}
 		</b-notification>
@@ -21,6 +22,7 @@
 				Signup
 			</router-link>
 		</p>
+	</section>
 	</div>
 </template>
 
@@ -43,7 +45,7 @@
 					this.$router.push('/')
 				}).catch(err => {
 					this.error = err.response.data.error
-					console.error('Login err', err.response.data.error);
+					//console.error('Login err', err.response.data.error);
 				});
 			},
 		},
@@ -51,9 +53,21 @@
 </script>
 
 <style scoped>
-.container {
-	padding: 5%;
-}
+	@media screen and (min-width: 769px) {
+			.notification {
+				margin: 50px 25%;
+			}
+		}
+
+	@media screen and (min-width: 577px) {
+		.notification {
+			margin: 40px 15%;
+		}
+	}
+
+	.container {
+		padding: 5%;
+	}
 	.modal-card {
 		width: auto;
 	}
