@@ -86,7 +86,7 @@
 
 				updateTrip(this.trip._id, data)
 				.then(trip => {
-					console.log(trip);
+					//console.log(trip);
 					this.$emit('updateTrip', trip);
 				}).catch(err => {
 					this.error = err.response.data.error

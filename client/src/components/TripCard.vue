@@ -47,7 +47,7 @@
 					</ul>
 				</div>
 			</div>
-			<trip-edit-form v-if="showForm" :trip="trip" @updateTrip="updateTrip"></trip-edit-form>
+			<trip-edit-form v-if="showForm" :trip="trip" @updateTrip="updateTrip($event)"></trip-edit-form>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
 			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>{{ showForm ? "Cancel" : "Edit"}}</a>
@@ -106,9 +106,10 @@
 					this.orders = orders.filter(order => order.tripId === id && order.status !== "rejected");
 				 });
 			},
-			updateTrip(){
+			updateTrip(trip){
 				this.showForm=false;
-				this.$emit('updateTrip',true);
+				//console.log('updateTrip function in TripCard',trip);
+				this.$emit('updateTrip', trip);
 				this.$router.push('/profile');
 				//TODO
 			},

@@ -16,7 +16,7 @@
 			<div class="column">
 				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your next trips</h4>
 				<div v-if="trips.length>0">
-						<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" @deleteTrip="deleteThisTrip(index)"></trip-card>
+						<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" @deleteTrip="deleteThisTrip(index)" @updateTrip="updateThisTrip(index, $event)"></trip-card>
 				</div>
 			</div>
 		</div>
@@ -28,6 +28,7 @@
 	import TripCard from '@/components/TripCard'
 	import OrderCard from '@/components/OrderCard'
 	import { showTrips } from '@/api/trips'
+	import { showTrip } from '@/api/trips'
 	import { showOrders } from '@/api/orders'
 	import { showUser } from '@/api/auth'
 
@@ -45,7 +46,14 @@
         	},
         	deleteThisTrip: function(index) {
         		this.trips.splice(index, 1);
-        	}
+        	},
+        	updateThisTrip: function(index, trip) {
+        		//console.log('profile', trip._id);
+        		showTrip(trip._id).then(data =>{
+        			console.log(data)
+        			this.trips.splice(index, 1, data);
+        		});	
+        	},
 		},
 		created() {
 			//show user's trips
