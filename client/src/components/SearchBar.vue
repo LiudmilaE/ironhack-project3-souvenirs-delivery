@@ -2,7 +2,7 @@
 	<section class="container" role="search">
 		<form>
 			<b-field>
-				<b-input placeholder="Search by country..."
+				<b-input placeholder="Search by country you want souvenir from..."
 						type="search"
 						icon="search" expanded v-model="query" name="query" autofocus v-focus>
 				</b-input>

@@ -80,7 +80,7 @@
 					this.$router.push('/login');
 				}).catch(err => {
 					this.error = err.response.data.error
-					//console.error('Signup err', err.response.data.error);
+					console.error('Signup err', err.response.data.error);
 				});
 			}
 		}
