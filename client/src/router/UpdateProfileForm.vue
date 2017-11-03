@@ -1,6 +1,6 @@
 <template>
 	<div class="container has-text-centered">
-		<div class="notification has-text-centered">
+		<section class="notification has-text-centered">
 			<h3 class="title is-2">Edit your account</h3>
 			<section class="tile is-anscestor">
 				<div class="tile is-parent avatar-update">
@@ -45,7 +45,7 @@
 			<button @click.prevent="saveChanges" class="button is-primary is-large is-outlined">Update profile</button>
 			<router-link v-if="$root.user" to="/profile" class="button is-danger is-large is-outlined">Cancel</router-link>
 			 
-		</div>
+		</section>
 	</div>
 </template>
 

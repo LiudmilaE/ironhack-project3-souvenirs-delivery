@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="notification columns">
+		<section class="notification columns">
 			<div class="column">
 				<user-card :user="user"></user-card>
 				<hr>
@@ -19,7 +19,7 @@
 						<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" @deleteTrip="deleteThisTrip(index)" @updateTrip="updateThisTrip(index, $event)"></trip-card>
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 </template>
 

@@ -172,7 +172,7 @@ export default {
 	            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 		}
 
-	.notification a:not(.button) {
+	section.notification a:not(.button) {
 		text-decoration: none;
 		color: #7957d5;
 	}
