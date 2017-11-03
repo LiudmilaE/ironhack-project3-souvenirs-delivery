@@ -4,13 +4,20 @@
 			{{ error.message }}
 		</b-notification>
 		<form @submit.prevent="updateTrip">
-			<b-field label="Trip Date">
+			<!-- <b-field label="Trip Date">
 				<b-input type="date" v-model="tripDate" required maxlength="30" v-focus></b-input>
 			</b-field>
 
 			<b-field label="Trip End Date">
 				<b-input type="date" v-model="endTripDate" required maxlength="30"></b-input>
-			</b-field>
+			</b-field> -->
+			<b-field label="Select new dates">
+			<HotelDatePicker
+				v-on:checkInChanged="getStartDate"
+				v-on:checkOutChanged="getEndDate"
+				:i18n="ptBr"
+				/></HotelDatePicker>
+				</b-field>
 
 			<b-field label="Still has space to accept orders?">
 				<div class="field">
@@ -21,7 +28,7 @@
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
-				<b-input type="number" v-model="deliveryPrice" required maxlength="30"></b-input>
+				<b-input type="number" v-model="deliveryPrice" required maxlength="30" value="trip.deliveryPrice"></b-input>
 			</b-field>
 
 			<button class="button is-primary">Edit trip details</button>
@@ -31,6 +38,7 @@
 
 <script>
 	import { updateTrip } from '@/api/trips'
+	import HotelDatePicker from 'vue-hotel-datepicker'
 
 	export default {
 		data () {
@@ -39,28 +47,56 @@
 				endTripDate: '',
 				deliveryPrice: '',
 				acceptOrders: true,
-				error: null
+				error: null,
+				ptBr: {
+					night: 'Night',
+					nights: 'Nights',
+					'day-names': ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+					'check-in': 'Start Date',
+					'check-out': 'End Date',
+					'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+				},
 			}
 		},
 		props: ['trip'],
 		methods: { 
+			getStartDate (date) {
+				//console.log(date);
+				this.tripDate = date;
+			}, 
+			getEndDate (date) {
+				//console.log(date);
+				this.endTripDate = date;
+			}, 
 			updateTrip () {
 				this.error = null;
-				let data = {
-					acceptOrders: this.acceptOrders,
-					tripDate: this.tripDate,
-					endTripDate: this.endTripDate,
-					deliveryPrice: this.deliveryPrice,
-				};
+				let data = {};
+				if(this.tripDate){
+					data.tripDate = this.tripDate;
+				}
+				if(this.endTripDate){
+					data.endTripDate = this.endTripDate;
+				}
+				if(this.acceptOrders){
+					data.acceptOrders = this.acceptOrders;
+				}
+				if(this.deliveryPrice){
+					data.deliveryPrice = this.deliveryPrice;
+				}
+
 				updateTrip(this.trip._id, data)
 				.then(trip => {
-					this.$emit('updateTrip', trip)
+					console.log(trip);
+					this.$emit('updateTrip', trip);
 				}).catch(err => {
 					this.error = err.response.data.error
 					console.error('Trip edit err', err.response.data.error);
 				});
 				
 			} 
+		},
+		components: {
+			HotelDatePicker,
 		},
 	}
 </script>

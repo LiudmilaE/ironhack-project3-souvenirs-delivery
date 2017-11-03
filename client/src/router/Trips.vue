@@ -36,3 +36,11 @@
 	}
 	
 </script>
+
+<style scoped>
+	@media screen and (min-width: 769px) {
+		.notification {
+		padding: 5% 15%;
+ 	}
+	}
+</style>

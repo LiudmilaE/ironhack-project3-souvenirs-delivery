@@ -113,6 +113,11 @@ export default {
 </script>
 
 <style>
+@media screen and (max-width: 768px) {
+	.notification {
+		padding: 3%;
+ 	}
+}
 	@media screen and (min-width: 769px) {
 	.order {
 			max-width: 95%;

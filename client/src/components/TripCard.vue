@@ -50,7 +50,7 @@
 			<trip-edit-form v-if="showForm" :trip="trip" @updateTrip="updateTrip"></trip-edit-form>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
-			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>{{ showForm ? "Cancel" : "Edit"}}</a>
 			<a href="#" @click.prevent="deleteTrip" v-if="trip.travelerId === user._id && orders.length === 0" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Delete</a>
 		</footer>
 	</div>

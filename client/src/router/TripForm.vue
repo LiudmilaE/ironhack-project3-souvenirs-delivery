@@ -32,7 +32,6 @@
 				/></HotelDatePicker>
 				</b-field>
 
-
 			<b-field label="Delivery Price in USD">
 				<b-input type="number" v-model="deliveryPrice" required maxlength="30"></b-input>
 			</b-field>
@@ -52,13 +51,13 @@
 			return {
 				from: '',
 				ptBr: {
-		      night: 'Night',
-		  		nights: 'Nights',
-		  		'day-names': ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
-		  		'check-in': 'Start Date',
-		  		'check-out': 'End Date',
-		  		'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    		},
+					night: 'Night',
+					nights: 'Nights',
+					'day-names': ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
+					'check-in': 'Start Date',
+					'check-out': 'End Date',
+					'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+				},
 				to: '',
 				options: listCountries(),
 				tripDate: '',
