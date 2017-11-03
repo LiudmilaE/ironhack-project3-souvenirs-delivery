@@ -3,7 +3,7 @@
 		<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
 			<div class="navbar-brand">
 				<router-link class="navbar-item" to="/">
-					<span class="emoji"> &#x2708 </span>
+					<i class="fa fa-plane" aria-hidden="true"></i>
 					Souvenirs Delivery 
 				</router-link>
 				<a class="gh-btn navbar-item" title="Github" id="gh-btn" target="_blank" aria-label="Star on GitHub" href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery">
@@ -47,7 +47,7 @@
 				<div class="content has-text-centered">
 					<p> &copy;
 						<strong>Souvenirs Delivery</strong> by <a href="https://www.linkedin.com/in/liudmyla-iefremova/" target="_blank">Liudmyla Iefremova</a>. The source code is available on
-						<a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>. Powered by <a target="_blank" href="https://vuejs.org/" ><img src="./assets/logo.png" id="vue-logo" alt="Vue.js"></a>
+						<a href="https://github.com/LiudmilaE/ironhack-project3-souvenirs-delivery" target="_blank"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>. Powered by <a target="_blank" href="https://vuejs.org/" ><img src="./assets/logo.png" id="vue-logo" alt="Vue.js"></a> &amp; <a target="_blank" href="https://ironhack-souvenirs-delivery.herokuapp.com/" ><img src="./assets/heroku-logo.png" id="heroku-logo" alt="Vue.js"></a>
 					</p>
 				</div>
 			</div>
@@ -137,7 +137,7 @@ export default {
 		color: #2c3e50;
 		margin-top: 60px;
 	}
-	#vue-logo {
+	#vue-logo, #heroku-logo {
 		height: 15px;
 		width: 15px;
 	}
