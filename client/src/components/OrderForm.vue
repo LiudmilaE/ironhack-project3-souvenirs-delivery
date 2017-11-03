@@ -13,8 +13,9 @@
 						required>
 					</b-input>
 				</b-field>
+				{{start}} {{end}}
 				<b-field label="Pickup Date">
-					<b-input type="date" v-model="pickupDate" required maxlength="30"></b-input>
+					<b-input type="date" v-model="pickupDate" required maxlength="30" :min="start" :max="end" :value="trip.tripDate"></b-input>
 				</b-field>
 				<b-field label="Description">
 					<b-input
@@ -43,6 +44,17 @@
 				description: '',
 				pickupDate: '',
 			}
+		},
+		computed: {
+			start () { 
+				let date = new Date(this.trip.tripDate);
+				return `${date.getFullYear()}-${date.getMonth()+1}-${date.getUTCDate()+1}`
+			},
+			end () { 
+				let date = new Date(this.trip.endTripDate);
+				return `${date.getFullYear()}-${date.getMonth()+1}-${date.getUTCDate()}` //one day before trip ends
+				},
+
 		},
 		props: ['trip'],
 		methods: {

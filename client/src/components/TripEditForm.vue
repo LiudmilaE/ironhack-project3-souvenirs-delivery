@@ -28,7 +28,7 @@
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
-				<b-input type="number" v-model="deliveryPrice" required maxlength="30" value="trip.deliveryPrice"></b-input>
+				<b-input type="number" v-model="deliveryPrice" required maxlength="30"></b-input>
 			</b-field>
 
 			<button class="button is-primary">Edit trip details</button>
@@ -45,7 +45,7 @@
 			return {
 				tripDate: '',
 				endTripDate: '',
-				deliveryPrice: '',
+				deliveryPrice: this.trip.deliveryPrice || '',
 				acceptOrders: true,
 				error: null,
 				ptBr: {

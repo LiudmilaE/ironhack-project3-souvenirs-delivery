@@ -119,6 +119,10 @@ export default {
  	}
 }
 	@media screen and (min-width: 769px) {
+	html {
+		font-size: 20px;
+		line-height: 1.2;
+	}
 	.order {
 			max-width: 95%;
 			margin-bottom: 5px;
