@@ -6,6 +6,8 @@ import router from './router';
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
 import 'buefy/lib/buefy.css';
+import FlagIcon from 'vue-flag-icon'
+Vue.use(FlagIcon);
 
 Vue.use(Buefy);
 Vue.use(require('vue-moment'));

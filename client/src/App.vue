@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				var burger = document.getElementById("navBurger");
 				if(nav.className == "navbar-menu is-active") {
 					nav.className = "navbar-menu";
-			 		burger.className = "navbar-burger burger"
+					burger.className = "navbar-burger burger"
 				}
 			});
 		}
@@ -116,7 +116,7 @@ export default {
 @media screen and (max-width: 768px) {
 	.notification {
 		padding: 3%;
- 	}
+	}
 }
 	@media screen and (min-width: 769px) {
 	html {
@@ -168,8 +168,8 @@ export default {
 
 	.card, .box {
 			-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-	       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.5) inset;
-	            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+				 -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.5) inset;
+							box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 		}
 
 	section.notification a:not(.button) {

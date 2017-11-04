@@ -56,3 +56,9 @@ export function listCountries() {
 		return obj.name
 	});
 }
+
+export function countriesDB() {
+	const countriesDB = require('../../../server/data/countries');
+	return countriesDB
+}
+

@@ -27,7 +27,7 @@
 					icon="globe"
 					icon-pack="fa">
 					<option disabled value="">Please select one</option>
-					<option v-for="option in options" :value="option">{{option}}</option>			
+					<option v-for="option in options" :value="option">{{option.name}}</option>			
 				</b-select>
 			</b-field>
 
@@ -52,7 +52,8 @@
 
 <script>
 	import { signup } from '@/api/auth'
-	import { listCountries } from '@/api/trips'
+	//import { listCountries } from '@/api/trips'
+	import { countriesDB } from '@/api/trips'
 
 	export default {
 		data () {
@@ -64,7 +65,7 @@
 				firstName: '',
 				lastName: '',
 				country: '',
-				options: listCountries(),
+				options: countriesDB(),
 			}
 		},
 		methods: {
@@ -76,7 +77,8 @@
 					firstName: this.firstName,
 					lastName: this.lastName,
 					password: this.password,
-					country: this.country,
+					country: this.country.name,
+					iso: this.country.code,
 				}).then(() => {
 					this.$router.push('/login');
 				}).catch(err => {
@@ -100,7 +102,7 @@
  		}
 	}
 
-	577 911
+	/*577 911*/
 .container {
 	padding: 5%;
 }

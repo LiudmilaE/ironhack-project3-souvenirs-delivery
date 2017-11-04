@@ -33,6 +33,9 @@ const userSchema = new Schema({
 		enum: COUNTRIES,
 		//required: true 
 	},
+	iso: {
+		type: String,
+	},
 	image: { 
 		type: String, 
 		default: null 

@@ -12,7 +12,7 @@
 								icon="globe"
 								icon-pack="fa" expanded v-focus>
 								<option disabled value="">Please select one</option>
-								<option v-for="option in options" :value="option">{{option}}</option>			
+								<option v-for="option in options" :value="option">{{option.name}}</option>			
 							</b-select>
 						</b-field>
 					</article>
@@ -51,7 +51,8 @@
 
 <script>
 	import { uploadPicture, updateUser, showUser } from '@/api/auth'
-	import { listCountries } from '@/api/trips'
+	//import { listCountries } from '@/api/trips'
+	import { countriesDB } from '@/api/trips'
 
 export default {
 	data () {
@@ -61,7 +62,7 @@ export default {
 			imgUrl: '',
 			user: showUser(this.$root.user._id) || this.$root.user || null,
 			country: '',
-			options: listCountries(),
+			options: countriesDB(),
 		}
 	},
 	created() {
@@ -89,8 +90,9 @@ export default {
 					image: this.imgUrl,
 				};
 			}
-			if(this.country){
-				data.country = this.country;
+			if(this.country && this.country!=={}){
+				data.country = this.country.name;
+				data.iso = this.country.code;
 			}
 			updateUser(this.$root.user._id, data);
 			this.$router.push('/profile');

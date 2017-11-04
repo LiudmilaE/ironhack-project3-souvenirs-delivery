@@ -14,7 +14,8 @@ router.post('/signup', (req, res, next) => {
 		firstName, 
 		lastName, 
 		password,
-		country
+		country,
+		iso,
 	} = req.body;
 
 	// User.register add the hashed version of password
@@ -24,6 +25,7 @@ router.post('/signup', (req, res, next) => {
 		firstName,
 		lastName,
 		country,
+		iso,
 	});
 
 	User.register(user, password, err => {
@@ -83,20 +85,20 @@ router.post('/login', (req, res, next) => {
 });
 
 //facebook login
-router.get('/auth/facebook', passport.authenticate('facebook'));
+// router.get('/auth/facebook', passport.authenticate('facebook'));
 
-router.get(
-	'/auth/facebook/callback',
-	passport.authenticate('facebook', { failureRedirect: '/', session: false }),
-	(req, res) => {
-		console.log(req.user);
-		const payload = {
-			id: req.user.id,
-		};
-		const token = jwt.encode(payload, config.jwtSecret);
-		res.json({ token });
-	}
-);
+// router.get(
+// 	'/auth/facebook/callback',
+// 	passport.authenticate('facebook', { failureRedirect: '/', session: false }),
+// 	(req, res) => {
+// 		console.log(req.user);
+// 		const payload = {
+// 			id: req.user.id,
+// 		};
+// 		const token = jwt.encode(payload, config.jwtSecret);
+// 		res.json({ token });
+// 	}
+// );
 
 
 

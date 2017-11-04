@@ -11,7 +11,7 @@
 			<div class="media-content">
 				<p class="title is-4">{{user.firstName}} {{user.lastName}}</p>
 				<p class="subtitle is-5">@{{user.username}}</p>
-				<p class="subtitle is-6">Current country - {{ user.country }}</p>
+				<p class="subtitle is-6">Current country - {{ user.country }} <flag class="flag" :iso="countryISO"/></p>
 			</div>
 		</div>
 	</div>
@@ -19,13 +19,38 @@
 </template>
 
 <script>
+import { countriesDB } from '@/api/trips'
 
 	export default {
 		data () {
-			return {}
+			return {
+			}
 		},
 		props: ['user'],
+		computed: {
+				countryISO () {
+					if(!this.user.iso) {
+							
+						let c = this.user.country
+						let countries = countriesDB()
+						let country = countries.find(country => country.name === c);
+						if (country){
+							return country.code
+						}
+					return "fr"
+					}
+					return this.user.iso
+			},
+		},
 	}
 	
 </script>
+
+<style skoped>
+	.flag {
+		-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+			 -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.5) inset;
+						box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+	}
+</style>
 
