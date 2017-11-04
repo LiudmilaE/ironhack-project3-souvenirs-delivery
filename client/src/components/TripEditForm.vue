@@ -28,7 +28,7 @@
 			</b-field>
 
 			<b-field label="Delivery Price in USD">
-				<b-input type="number" v-model="deliveryPrice" required maxlength="5"></b-input>
+				<b-input type="number" v-model="deliveryPrice" required maxlength="3"></b-input>
 			</b-field>
 
 			<button class="button is-primary">Edit trip details</button>
