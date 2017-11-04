@@ -14,7 +14,7 @@
 					</b-input>
 				</b-field>
 				<b-field label="Pickup Date">
-					<b-input type="date" v-model="pickupDate" required maxlength="30" :min="start" :max="end" :value="trip.tripDate"></b-input>
+					<b-input type="date" v-model="pickupDate" required :min="start" :max="end" :value="trip.tripDate"></b-input>
 				</b-field>
 				<b-field label="Description">
 					<b-input
