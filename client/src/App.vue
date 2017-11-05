@@ -29,7 +29,7 @@
 							How does it work ?
 					</router-link>
 					<router-link v-if="$root.user" to="/profile" class="navbar-item toggle-item">
-							<i class="fa fa-user-o" aria-hidden="true"></i> My Profile
+							<i class="fa fa-user-o" aria-hidden="true"></i> Profile
 					</router-link>
 					<a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
 							Logout
