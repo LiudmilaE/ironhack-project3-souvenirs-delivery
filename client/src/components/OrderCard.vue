@@ -85,6 +85,7 @@
 				let data = {
 					status: "accepted",
 				};
+				this.$parent.close();
 				updateOrder(this.order._id, data)
 					.then(() => {
 					this.$router.push('/');
@@ -98,6 +99,7 @@
 				let data = {
 					status: "rejected",
 				};
+				this.$parent.close();
 				updateOrder(this.order._id, data)
 					.then(() => {
 					this.$router.push('/');

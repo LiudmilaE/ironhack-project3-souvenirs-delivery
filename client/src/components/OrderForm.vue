@@ -27,7 +27,7 @@
 			</section>
 			<footer class="modal-card-foot">
 				<button class="button" type="button" @click="$parent.close()">Close</button>
-				<button class="button is-primary" type="submit">Add order</button>
+				<button class="button is-primary" type="submit" @click="$parent.close()">Add order</button>
 			</footer>
 		</div>
 	</form>

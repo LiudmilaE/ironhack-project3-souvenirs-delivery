@@ -31,7 +31,7 @@
 				<b-input type="number" v-model="deliveryPrice" required maxlength="3"></b-input>
 			</b-field>
 
-			<button class="button is-primary">Edit trip details</button>
+			<button class="button is-primary" @click="$parent.close()">Edit trip details</button>
 		</form>
 	</div>
 </template>
