@@ -4,13 +4,6 @@
 			{{ error.message }}
 		</b-notification>
 		<form @submit.prevent="updateTrip">
-			<!-- <b-field label="Trip Date">
-				<b-input type="date" v-model="tripDate" required maxlength="30" v-focus></b-input>
-			</b-field>
-
-			<b-field label="Trip End Date">
-				<b-input type="date" v-model="endTripDate" required maxlength="30"></b-input>
-			</b-field> -->
 			<b-field label="Select new dates">
 			<HotelDatePicker
 				v-on:checkInChanged="getStartDate"
@@ -61,11 +54,9 @@
 		props: ['trip'],
 		methods: { 
 			getStartDate (date) {
-				//console.log(date);
 				this.tripDate = date;
 			}, 
 			getEndDate (date) {
-				//console.log(date);
 				this.endTripDate = date;
 			}, 
 			updateTrip () {
@@ -86,7 +77,6 @@
 
 				updateTrip(this.trip._id, data)
 				.then(trip => {
-					//console.log(trip);
 					this.$emit('updateTrip', trip);
 				}).catch(err => {
 					this.error = err.response.data.error

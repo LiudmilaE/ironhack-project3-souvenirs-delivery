@@ -38,11 +38,10 @@
 					<hr>
 					<p>Registered <b>{{orders.length}}</b> order(s)</p>
 					<ul v-if="user">
-						<li v-for="tripOrder in orders" :key="order.id" v-if="tripOrder.travelerId === user._id">
-							<span @click="isOrderModalActive = true">{{tripOrder.souvenirTitle}} <i class="fa fa-info-circle info" aria-hidden="true"></i></span>
-							<b-modal :active.sync="isOrderModalActive" has-modal-card>
-								<order-card :order="tripOrder"></order-card>
-							</b-modal>
+						<li v-for="(tripOrder, index) in orders" :key="order.id" v-if="tripOrder.travelerId === user._id">
+								<order-card :order="tripOrder" @acceptOrder="updateOrders" 
+									@rejectOrder="updateOrders"></order-card>
+							
 						</li>
 					</ul>
 				</div>
@@ -76,7 +75,6 @@
 				orders: [],
 				isModalActive: false,
 				traveler: null,
-				isOrderModalActive: false,
 			}
 		},
 		components: {
@@ -88,11 +86,15 @@
 		props: ['trip'],
 		methods: {
 			deleteTrip () {
-				// let id = this.id
 				deleteTrip(this.trip._id).
 				then(this.$emit('deleteTrip',true))
 				this.$router.push('/profile');
 				
+			},
+			updateThisOrder: function(index, order) {
+				showOrder(order._id).then(data =>{
+					this.orders.splice(index, 1, data);
+				});	
 			},
 			showUserDetails (id) {
 				showUser(id).then(user => {
@@ -129,5 +131,8 @@
 <style scoped>
 	.card-header-title {
 		font-size: 1.5rem;
+	}
+	li {
+		list-style-type: none;
 	}
 </style>

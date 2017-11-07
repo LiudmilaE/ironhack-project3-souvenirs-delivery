@@ -10,14 +10,17 @@
 				<hr>
 				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders, that you should pick up</h4>
 				<div v-if="orders.length>0">
-					<order-card v-for="(order,index) in orders" :key="order.id" :order="order" class="column" @deleteOrder="deleteThisOrder(index)"></order-card>
+					<order-card v-for="(order, index) in orders" :key="order.id" :order="order" class="column" 
+						@deleteOrder="deleteThisOrder(index)" ></order-card>
 				</div>
 			</div>
 			<hr>
 			<div class="column">
 				<h4 class="title is-4" v-if="trips.length>0"><i class="fa fa-plane" aria-hidden="true"></i>Your next trips</h4>
 				<div v-if="trips.length>0">
-						<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" @deleteTrip="deleteThisTrip(index)" @updateTrip="updateThisTrip(index, $event)"></trip-card>
+					<trip-card v-for="(trip, index) in trips" :key="trip.id" :trip="trip" class="column" 
+						@deleteTrip="deleteThisTrip(index)" 
+						@updateTrip="updateThisTrip(index, $event)"></trip-card>
 				</div>
 			</div>
 		</section>
@@ -31,6 +34,7 @@
 	import { showTrips } from '@/api/trips'
 	import { showTrip } from '@/api/trips'
 	import { showOrders } from '@/api/orders'
+	import { showOrder } from '@/api/orders'
 	import { showUser } from '@/api/auth'
 
 	export default {
@@ -43,18 +47,21 @@
 		},
 		methods: {
 			deleteThisOrder: function(index) {
-            	this.orders.splice(index, 1);
-        	},
-        	deleteThisTrip: function(index) {
-        		this.trips.splice(index, 1);
-        	},
-        	updateThisTrip: function(index, trip) {
-        		//console.log('profile', trip._id);
-        		showTrip(trip._id).then(data =>{
-        			console.log(data)
-        			this.trips.splice(index, 1, data);
-        		});	
-        	},
+				this.orders.splice(index, 1);
+			},
+			updateThisOrder: function(index, order) {
+				showOrder(order._id).then(data =>{
+					this.orders.splice(index, 1, data);
+				});	
+			},
+			deleteThisTrip: function(index) {
+				this.trips.splice(index, 1);
+			},
+			updateThisTrip: function(index, trip) {
+				showTrip(trip._id).then(data =>{
+					this.trips.splice(index, 1, data);
+				});	
+			},
 		},
 		created() {
 			//show user's trips

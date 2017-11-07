@@ -1,47 +1,55 @@
 <template>
-	<div class="card order" :order="order">
-		<header class="card-header">
-			<p class="card-header-title">
-				<i class="fa fa-hourglass-o" aria-hidden="true" v-if="order.status === 'pending'"></i>
-				<i class="fa fa-check-square-o" aria-hidden="true" v-if="order.status === 'accepted'"></i>
-				<i class="fa fa-window-close-o" aria-hidden="true" v-if="order.status === 'rejected'"></i>
-				{{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
-				 / {{ order.status }}</em>
-			</p>
-			<span v-if ="user && order.travelerId !== user._id" class="card-header-icon">
-				<span @click="showUserDetails(order.travelerId)">
-					<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
-					...
-				</span>
+	<section>
+		<b-collapse class="card order" :order="order" :open.sync="isOpen">
 
-				<b-modal :active.sync="isModalActive" has-modal-card>
-					<user-card :user="traveler"></user-card>
-				</b-modal>
-			</span>
-		</header>
-		<div class="card-content">
-			<div class="content">
-				<p>{{ order.description }}</p>
-				<div v-if="user && (order.clientId === user._id || order.travelerId === user._id) && order.status === 'accepted'">
-					<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
-					<hr>
-					<p v-if="order.travelerId === user._id || order.clientId === user._id">Want to change the pick up details?</p>
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					<em>{{ order.clientId === user._id ? emailTraveler : emailClient }}</em>
+			<header slot="trigger" class="card-header">
+				<p class="card-header-title">
+					<i class="fa fa-hourglass-o" aria-hidden="true" v-if="order.status === 'pending'"></i>
+					<i class="fa fa-check-square-o" aria-hidden="true" v-if="order.status === 'accepted'"></i>
+					<i class="fa fa-window-close-o" aria-hidden="true" v-if="order.status === 'rejected'"></i>
+					{{ order.souvenirTitle }}<em v-if="user && (order.clientId === user._id || order.travelerId === user._id)">
+					 / {{ order.status }}</em>
+				</p>
+				<span v-if ="user && order.travelerId !== user._id" class="card-header-icon">
+					<span @click="showUserDetails(order.travelerId)">
+						<i class="fa fa-address-card-o primary" aria-hidden="true"></i>
+						...
+					</span>
+
+					<b-modal :active.sync="isModalActive" has-modal-card>
+						<user-card :user="traveler"></user-card>
+					</b-modal>
+				</span>
+				<span class="card-header-icon">
+          <b-icon :icon="isOpen ? 
+                        'arrow_drop_down' : 'arrow_drop_up'">
+          </b-icon>
+        </span>
+			</header>
+			<div class="card-content">
+				<div class="content">
+					<p>{{ order.description }}</p>
+					<div v-if="user && (order.clientId === user._id || order.travelerId === user._id) && order.status === 'accepted'">
+						<time>Pickup on {{ order.pickupDate | moment("dddd, MMMM Do YYYY") }}</time>
+						<hr>
+						<p v-if="order.travelerId === user._id || order.clientId === user._id">Want to change the pick up details?</p>
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+						<em>{{ order.clientId === user._id ? emailTraveler : emailClient }}</em>
+					</div>
+					<p v-if="user && order.clientId === user._id && order.status === 'rejected'">Your request was rejected. Please, delete your order and try again</p>
 				</div>
-				<p v-if="user && order.clientId === user._id && order.status === 'rejected'">Your request was rejected. Please, delete your order and try again</p>
 			</div>
-		</div>
-		<footer class="card-footer" v-if="user && order.clientId === user._id && order.status !== 'accepted'">
-			<!--TODO
-			 <a href="#" @click.prevent="deleteOrder" class="card-footer-item" v-if="order.status==='accepted'">Done</a> -->
-			<a href="#" @click.prevent="deleteOrder" class="card-footer-item danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
-		</footer>
-		<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">
-			<a href="#" @click.prevent="acceptOrder" class="card-footer-item success"><i class="fa fa-handshake-o" aria-hidden="true"></i>Accept request</a>
-			<a href="#" @click.prevent="rejectOrder" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Reject request</a>
-		</footer>
-	</div>
+			<footer class="card-footer" v-if="user && order.clientId === user._id && order.status !== 'accepted'">
+				<!--TODO
+				 <a href="#" @click.prevent="deleteOrder" class="card-footer-item" v-if="order.status==='accepted'">Done</a> -->
+				<a href="#" @click.prevent="deleteOrder" class="card-footer-item danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
+			</footer>
+			<footer class="card-footer" v-if="user && order.travelerId === user._id && order.status === 'pending'">
+				<a href="#" @click.prevent="acceptOrder" class="card-footer-item success"><i class="fa fa-handshake-o" aria-hidden="true"></i>Accept request</a>
+				<a href="#" @click.prevent="rejectOrder" class="card-footer-item danger"><i class="fa fa-times" aria-hidden="true"></i>Reject request</a>
+			</footer>
+		</b-collapse>
+	</section>
 </template>
 
 <script>
@@ -52,6 +60,7 @@
 	export default {
 		data () {
 			return {
+				isOpen: false,
 				user: this.$root.user || null,
 				emailTraveler: '',
 				emailClient: '',
@@ -85,10 +94,9 @@
 				let data = {
 					status: "accepted",
 				};
-				this.$parent.close();
 				updateOrder(this.order._id, data)
-					.then(() => {
-					this.$router.push('/');
+					.then((order) => {
+					this.$emit('acceptOrder', order);
 				}).catch(err => {
 					this.error = err.response.data.error
 					console.error('Order edit err', err.response.data.error);
@@ -99,13 +107,12 @@
 				let data = {
 					status: "rejected",
 				};
-				this.$parent.close();
 				updateOrder(this.order._id, data)
-					.then(() => {
-					this.$router.push('/');
+					.then((order) => {
+						this.$emit('rejectOrder', order);
 				}).catch(err => {
-					this.error = err.response.data.error
-					console.error('Order edit err', err.response.data.error);
+						this.error = err.response.data.error
+						console.error('Order edit err', err.response.data.error);
 				});
 			},
 			showUserDetails (id) {

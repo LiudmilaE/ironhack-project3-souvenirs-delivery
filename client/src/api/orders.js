@@ -16,6 +16,14 @@ export function showOrders () {
 		});
 }
 
+export function showOrder (id) {
+	return ordersApi
+		.get('/'+id)
+		.then(response => {
+			return response.data;
+		});
+}
+
 export function addOrder (orderInfo) {
 	return ordersApi
 		.post('/', orderInfo)
