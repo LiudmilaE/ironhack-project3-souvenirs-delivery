@@ -125,3 +125,9 @@
 	}
 	
 </script>
+
+<style scoped>
+	.card-header-title {
+		font-size: 1.5rem;
+	}
+</style>
