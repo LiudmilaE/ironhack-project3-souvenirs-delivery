@@ -10,8 +10,9 @@
 				<hr>
 				<h4 class="title is-4" v-if="orders.length>0"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your orders, that you should pick up</h4>
 				<div v-if="orders.length>0">
-					<order-card v-for="(order, index) in orders" :key="order.id" :order="order" class="column" 
-						@deleteOrder="deleteThisOrder(index)" ></order-card>
+						<order-card v-for="(order, index) in orders" 
+						:key="order.id" :order="order" class="column"
+						@deleteOrder="deleteThisOrder(index)"></order-card>
 				</div>
 			</div>
 			<hr>

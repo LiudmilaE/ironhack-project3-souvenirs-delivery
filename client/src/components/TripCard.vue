@@ -46,7 +46,8 @@
 					</ul>
 				</div>
 			</div>
-			<trip-edit-form v-if="showForm" :trip="trip" @updateTrip="updateTrip($event)"></trip-edit-form>
+			<transition name="expand">
+			<trip-edit-form v-if="showForm" :trip="trip" @updateTrip="updateTrip($event)"></trip-edit-form></transition>
 		</div>
 		<footer class="card-footer" v-if="user && trip.travelerId === user._id">
 			<a href="#" class="card-footer-item success" @click.prevent="showForm=!showForm"><i class="fa fa-pencil" aria-hidden="true"></i>{{ showForm ? "Cancel" : "Edit"}}</a>
