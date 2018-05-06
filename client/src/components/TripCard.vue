@@ -2,7 +2,7 @@
 	<div class="box trip" :trip="trip">
 		<header class="card-header">
 			<p class="card-header-title">
-				<span class="emoji">&#x2708</span>
+				<span class="emoji">&#x2708;</span>
 				Trip from {{ trip.from }} to {{ trip.to }}.
 			</p>
 			<span v-if ="user && trip.travelerId !== user._id" class="card-header-icon">
@@ -38,7 +38,7 @@
 					<hr>
 					<p>Registered <b>{{orders.length}}</b> order(s)</p>
 					<ul v-if="user">
-						<li v-for="(tripOrder, index) in orders" :key="order.id" v-if="tripOrder.travelerId === user._id">
+						<li v-for="(tripOrder, index) in orders" :key="tripOrder.id" v-if="tripOrder.travelerId === user._id">
 								<order-card :order="tripOrder" @acceptOrder="updateOrders" 
 									@rejectOrder="updateOrders"></order-card>
 							
